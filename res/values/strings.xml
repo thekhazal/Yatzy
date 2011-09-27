@@ -2,4 +2,8 @@
 <resources>
     <string name="hello">Hello World, YatzyActivity!</string>
     <string name="app_name">Yatzy</string>
+    <string name="resumegame">Resume Game</string>
+    <string name="newgame">New Game</string>
+    <string name="highscore">High Score</string>
+    <string name="button">Button</string>
 </resources>
