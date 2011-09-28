@@ -13,5 +13,9 @@
         android:layout_height="wrap_content"
         android:prompt="@string/players"
     />
+        <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/player1" android:visibility="invisible"></EditText>
+        <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/player2" android:visibility="invisible"></EditText>
+        <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/player3" android:visibility="invisible"></EditText>
+        <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/player4" android:visibility="invisible"></EditText>
 
 </LinearLayout>

@@ -21,6 +21,10 @@ public final class R {
         public static final int newgame=0x7f060001;
         public static final int nrOfPlayers=0x7f060004;
         public static final int nrOfPlayersText=0x7f060003;
+        public static final int player1=0x7f060005;
+        public static final int player2=0x7f060006;
+        public static final int player3=0x7f060007;
+        public static final int player4=0x7f060008;
         public static final int resumegame=0x7f060000;
     }
     public static final class layout {
