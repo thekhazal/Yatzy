@@ -23,7 +23,7 @@ public class Player {
 	public Player(String name) { 
 		this.name = name;
 		this.combos = new ArrayList<Integer>(18);
-		combos.add(17, 0);
+		this.combos.add(17, 0);
 	}
 	
 	public String getName() {
@@ -49,14 +49,28 @@ public class Player {
 	}
 	
 	/**
+	 * @return Returns the value for the first six combinations. This will be
+	 * used to calculate if a bonus will be received or not and also shown
+	 * on the score board during the game.
+	 */
+	public int getBonusScore() {
+		int middle = 0;
+		
+		for(int i = 0; i < 6; i++){
+			middle = middle + combos.get(i);
+		}
+		return middle;
+	}
+	
+	/**
 	 * @return Returns the total score of the player.
 	 */
 	public int getTotalScore() {
-		int temp = 0;
+		int total = 0;
 		
-		for(Integer i: combos)
-			temp = temp + i;
-		
-		return temp;
+		for(int i = 0; i < combos.size(); i++)
+			if (i != 6 || i != 17)
+				total = total + i;
+		return total;
 	}
 }
