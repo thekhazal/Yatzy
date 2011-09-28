@@ -4,6 +4,7 @@
     android:layout_height="fill_parent" 
     android:layout_width="fill_parent"
     android:background="#000000" android:weightSum="1" android:orientation="vertical">
+
     <AutoCompleteTextView android:id="@+id/resumegame" android:text="@string/resumegame" android:layout_height="wrap_content" android:layout_gravity="left" 
 
 android:layout_width="fill_parent" android:fitsSystemWindows="true"></AutoCompleteTextView>
@@ -13,7 +14,7 @@ android:fitsSystemWindows="true"></AutoCompleteTextView>
     <AutoCompleteTextView android:id="@+id/highscore" android:text="@string/highscore" android:layout_height="wrap_content" android:layout_width="fill_parent" 
 
 android:fitsSystemWindows="true"></AutoCompleteTextView>
-=======
+
     <Button android:id="@+id/resumegame" android:text="@string/resumegame" android:layout_height="wrap_content" android:layout_gravity="left" 
 
 android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
@@ -23,7 +24,12 @@ android:fitsSystemWindows="true"></Button>
     <Button android:id="@+id/highscore" android:text="@string/highscore" android:layout_height="wrap_content" android:layout_width="fill_parent" 
 
 android:fitsSystemWindows="true"></Button>
->>>>>>> d051327b6946c2d7bdf9f2d23a6e142db19c0cf6
+
     
+</LinearLayout>
+
+    <Button android:id="@+id/resumegame" android:text="@string/resumegame" android:layout_height="wrap_content" android:layout_gravity="left" android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
+    <Button android:id="@+id/newgame" android:text="@string/newgame" android:layout_height="wrap_content" android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
+    <Button android:id="@+id/highscore" android:text="@string/highscore" android:layout_height="wrap_content" android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
 </LinearLayout>
 
