@@ -51,7 +51,7 @@ public class Player {
 	 * @return Returns the total score of the player.
 	 */
 	public int getTotalScore() {
-		int temp = 0;
+		int temp = 1;
 		
 		for(Integer i: combos)
 			temp = temp + i;
