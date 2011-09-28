@@ -1,3 +1,6 @@
+package group5.yatzy;
+
+
 /*
 * Entry är en klass som representerar
 * en avbildning med en nyckel och ett värde.
