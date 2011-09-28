@@ -6,4 +6,16 @@
     <string name="newgame">New Game</string>
     <string name="highscore">High Score</string>
     <string name="button">Button</string>
+    <string name="players">How many players?</string>
+    <string name="one">1</string>
+    
+    <string name="players_prompt">How many </string>
+    <string-array name="players_array">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+    </string-array>
+
+	
 </resources>
