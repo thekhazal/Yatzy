@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Player {
 	
 	private String name;
+	public int h;
 	/**
 	 * This list will be used to store the players chosen combinations during
 	 * the game.
