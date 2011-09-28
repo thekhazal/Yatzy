@@ -13,7 +13,7 @@ import android.widget.Toast;
 /**
  * 
  * @author Johan Grundén
- *
+ * testkommentar
  * Controller class for starting a new game
  */
 public class NewGameActivity extends Activity {
