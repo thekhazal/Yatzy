@@ -54,11 +54,8 @@ public class Combinations {
 			else 
 				this.combos.add(9, playerList.get(8));
 		}		
-
 		return combos;
-
 	}
-
 
 	/**
 	 * This method calculates the number of occurences of a specified dice 
@@ -75,7 +72,6 @@ public class Combinations {
 				occurence++;
 			}
 		}
-
 		if (occurence == 0)
 			return null;
 		return (diceValue * occurence);
@@ -94,10 +90,8 @@ public class Combinations {
 			if (dice[i] == dice[i+1])
 				return (dice[i]*2);
 		}
-
 		return null;
 	}
-
 
 	/**
 	 * This method calculates if there are two pair of any kind of the 
@@ -127,8 +121,6 @@ public class Combinations {
 		return null;
 	}
 
-
-
 	/**
 	 * This sorts a set of dice with the highest value first.
 	 * @param dice The sets of dice which you want to sort.
@@ -146,8 +138,4 @@ public class Combinations {
 		}
 		return dice;
 	}
-
-
-
-
 }
