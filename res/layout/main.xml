@@ -7,5 +7,4 @@
     <Button android:id="@+id/resumegame" android:text="@string/resumegame" android:layout_height="wrap_content" android:layout_gravity="left" android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
     <Button android:id="@+id/newgame" android:text="@string/newgame" android:layout_height="wrap_content" android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
     <Button android:id="@+id/highscore" android:text="@string/highscore" android:layout_height="wrap_content" android:layout_width="fill_parent" android:fitsSystemWindows="true"></Button>
-    
 </LinearLayout>
