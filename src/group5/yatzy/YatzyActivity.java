@@ -9,17 +9,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class YatzyActivity extends Activity {
+	
 	private Button resgButton;
 	private Button newgButton;
 	private Button highButton;
+	private HighScore hs;
 
-	/**
-	 * Called when the activity is first created.
-	 */
+	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+	
+		hs = new HighScore(this);
 
 		/**
 		 * Resume game, New game high score buttons
@@ -46,24 +48,33 @@ public class YatzyActivity extends Activity {
 		 * on event of clicked button
 		 */
 
-		newgButton.setOnClickListener(new OnClickListener(){
+		/*newgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
 				startActivity(gameIntent);
 			}
-		}); 
-
-		/* 
-        /////highscore
-        HighScore hs = new HighScore();
-        Button hsButton = (Button) findViewById(R.id.highscore);
-        hsButton.setOnClickListener(new OnClickListener(){
+		});*/
+		
+		
+        highButton.setOnClickListener(new OnClickListener(){
         	public void onClick(View v) {
-
-        		Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
-        		startActivity(gameIntent);
+        		Intent gameIntent = new Intent(YatzyActivity.this,HighScoreActivity.class);
+        		gameIntent.putExtra("names", hs.getWinnerNames());
+        		gameIntent.putExtra("scores", hs.getWinnerScores());
+        		startActivityForResult(gameIntent,0);
         	}
         }); 
-        //////*/
+       
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+    	super.onActivityResult(requestCode, resultCode, data);
+    	if(requestCode == 0){
+    		if(resultCode == Activity.RESULT_OK)
+    			hs.clear();
+    	}
+    }
+	
 }

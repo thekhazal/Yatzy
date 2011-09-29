@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent" 
+    android:layout_width="fill_parent"
+    android:background="#000000" android:weightSum="1" android:orientation="vertical">
+    <TableLayout android:layout_width="match_parent" android:id="@+id/tableLayout1" android:layout_height="wrap_content">
+        <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        	
+        	
+        </TableRow>
+        <TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:layout_height="wrap_content" android:text="Button" android:clickable="false" android:id="@+id/name1" android:layout_width="wrap_content"></Button>
+        </TableRow>
+        <TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+           <Button android:text="Button" android:id="@+id/name2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false"></Button>
+        </TableRow>
+        <TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+           <Button android:text="Button" android:id="@+id/name3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false"></Button>
+        </TableRow>
+    </TableLayout>
+    <Button android:text="Clear highscore" android:id="@+id/clear" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+ 
+</LinearLayout>

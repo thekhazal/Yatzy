@@ -1,28 +1,66 @@
 package group5.yatzy;
 
 import java.util.*;
+import java.io.*;
+
+import android.content.Context;
+
 
 public class HighScore {
 
 	ArrayList<Entry<String,Integer>> winners;
 	int HS_PLACES = 3;
+	Context c;
 	
 	/*
-	 * Constructor. Fills the highscorelist with empty scores.
+	 * Constructor. Loads the highscorelist from
+	 * a file, and creates empty scores if necessary.
 	 */
-	public HighScore()
+	public HighScore(Context c)
 	{
-		winners = new ArrayList<Entry<String,Integer>>();
-		for(int i = 0; i<HS_PLACES; i++)
-			winners.add(new Entry("Empty",0));
+		this.c = c;
+		try{
+			winners = RWHighscore.readHighScore(c);
+		}
+		catch(IOException e)
+		{
+			try{
+				winners = RWHighscore.newFile(c);
+			}
+			catch(IOException e2){}
+		}	
 	}
 	
 	/*
-	 * Returns all names and scores on the highscorelist.
-	 */
-	public ArrayList<Entry<String,Integer>> getWinners()
+	 * Returns all names on the highscorelist.	 
+	 * */
+	public String[] getWinnerNames()
 	{
-		return winners;
+		String[] names = new String[HS_PLACES];
+		int i = 0;
+		for(Entry e : winners)
+		{
+			names[i] = (String) e.getKey();
+			i++;
+		}
+		return names;
+		
+	}
+	
+	/*
+	 * Returns all scores on the highscorelist.	 
+	 * */
+	public int[] getWinnerScores()
+	{
+		int[] scores = new int[HS_PLACES];
+		int i = 0;
+		for(Entry e : winners)
+		{
+			scores[i] = (Integer) e.getValue();
+			i++;
+		}
+		return scores;
+		
 	}
 	
 	
@@ -53,10 +91,20 @@ public class HighScore {
 	 */
 	public void clear()
 	{
-		for(Entry e:winners)
-			winners.remove(e);
+		winners.clear();
 		for(int i = 0; i<HS_PLACES; i++)
 			winners.add(new Entry("Empty",0));
+	}
+	
+	public void saveHS()
+	{
+		try{
+			RWHighscore.saveHighScore(winners,c);
+		}
+		catch(IOException e)
+		{
+			//File does not exist -> what to do?
+		}
 	}
 	
 }
