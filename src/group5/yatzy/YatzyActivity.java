@@ -13,7 +13,9 @@ public class YatzyActivity extends Activity {
 	private Button newgButton;
 	private Button highButton;
 
-	/** Called when the activity is first created. hej*/
+	/**
+	 * Called when the activity is first created.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
