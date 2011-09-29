@@ -32,7 +32,8 @@ public class NewGameActivity extends Activity {
 	Button startButton;
 	
 	int intendedPlayers;
-	ArrayList<Player> players;
+	ArrayList<String> players;
+	String playerOne, playerTwo, playerThree, playerFour;
 	
     /** Called when the activity is first created. */
     @Override
@@ -69,7 +70,7 @@ public class NewGameActivity extends Activity {
         
         // Set intended players to zero, user has not made choice yet.
         intendedPlayers = 0;
-        players = new ArrayList<Player>();
+        players = new ArrayList<String>();
         /**
          * Button for start game
          */ 
@@ -83,28 +84,28 @@ public class NewGameActivity extends Activity {
 			public void onClick(View v) {
 				
 				if(intendedPlayers == 1) {
-					Player playerOne = new Player(player1.getText().toString());
+					playerOne = player1.getText().toString();
 					players.add(playerOne);
 				}
 				else if(intendedPlayers == 2){
-					Player playerOne = new Player(player1.getText().toString());
-					Player playerTwo = new Player(player2.getText().toString());
+					playerOne = player1.getText().toString();
+					playerTwo = player2.getText().toString();
 					players.add(playerOne);
 					players.add(playerTwo);
 				}
 				else if(intendedPlayers == 3){
-					Player playerOne = new Player(player1.getText().toString());
-					Player playerTwo = new Player(player2.getText().toString());
-					Player playerThree = new Player(player3.getText().toString());
+					playerOne = player1.getText().toString();
+					playerTwo = player2.getText().toString();
+					playerThree = player3.getText().toString();
 					players.add(playerOne);
 					players.add(playerTwo);
 					players.add(playerThree);
 				}
 				else if(intendedPlayers == 4){
-					Player playerOne = new Player(player1.getText().toString());
-					Player playerTwo = new Player(player2.getText().toString());
-					Player playerThree = new Player(player3.getText().toString());
-					Player playerFour = new Player(player4.getText().toString());
+					playerOne = player1.getText().toString();
+					playerTwo = player2.getText().toString();
+					playerThree = player3.getText().toString();
+					playerFour = player4.getText().toString();
 					players.add(playerOne);
 					players.add(playerTwo);
 					players.add(playerThree);
