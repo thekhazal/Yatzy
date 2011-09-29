@@ -16,6 +16,10 @@
         <item>Three</item>
         <item>Four</item>
     </string-array>
+        <string name="startgame">Start Game</string>
+        <string name="nrofplayers">Select nr of players</string>
+        <string name="names">Player names</string>
+        <string name="game">Game</string>
 
 	
 </resources>
