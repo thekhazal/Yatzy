@@ -22,18 +22,20 @@ import android.widget.TextView;
  */
 public class NewGameActivity extends Activity {
 	
-	TextView player1;
-	TextView player2;
-	TextView player3;
-	TextView player4;
+	private TextView player1;
+	private TextView player2;
+	private TextView player3;
+	private TextView player4;
 	
-	Spinner nrOfPlayers;
+	private Spinner nrOfPlayers;
 	
-	Button startButton;
+	private Button startButton;
 	
-	int intendedPlayers;
-	ArrayList<String> players;
-	String playerOne, playerTwo, playerThree, playerFour;
+	private int intendedPlayers;
+	private ArrayList<String> players;
+	private String playerOne, playerTwo, playerThree, playerFour;
+
+	public static final int MAX_LENGTH = 4;
 	
     /** Called when the activity is first created. */
     @Override
@@ -83,42 +85,60 @@ public class NewGameActivity extends Activity {
 		startButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				
-				if(intendedPlayers == 1) {
-					playerOne = player1.getText().toString();
+				Boolean startGame = false;
+				
+				playerOne = player1.getText().toString();
+				playerTwo = player2.getText().toString();
+				playerThree = player3.getText().toString();
+				playerFour = player4.getText().toString();
+				
+				if(intendedPlayers == 1 && nameIsOk(playerOne)) {
+					players.clear();
 					players.add(playerOne);
+					startGame = true;
 				}
-				else if(intendedPlayers == 2){
-					playerOne = player1.getText().toString();
-					playerTwo = player2.getText().toString();
+				else if(intendedPlayers == 2 && nameIsOk(playerOne) && nameIsOk(playerTwo)){
+					players.clear();
 					players.add(playerOne);
 					players.add(playerTwo);
+					startGame = true;
 				}
-				else if(intendedPlayers == 3){
-					playerOne = player1.getText().toString();
-					playerTwo = player2.getText().toString();
-					playerThree = player3.getText().toString();
+				else if(intendedPlayers == 3 && nameIsOk(playerOne) && nameIsOk(playerTwo) && nameIsOk(playerThree)){
+					players.clear();
 					players.add(playerOne);
 					players.add(playerTwo);
 					players.add(playerThree);
+					startGame = true;
 				}
-				else if(intendedPlayers == 4){
-					playerOne = player1.getText().toString();
-					playerTwo = player2.getText().toString();
-					playerThree = player3.getText().toString();
-					playerFour = player4.getText().toString();
+				else if(intendedPlayers == 4 && nameIsOk(playerOne) && nameIsOk(playerTwo) && nameIsOk(playerThree) && nameIsOk(playerFour)){
+					players.clear();
 					players.add(playerOne);
 					players.add(playerTwo);
 					players.add(playerThree);
 					players.add(playerFour);
+					startGame = true;
 				}
 				else {
 					// Do nothing
+					startGame = false;
 				}
-				Intent gameIntent = new Intent(NewGameActivity.this,GameActivity.class);
-				gameIntent.putExtra("NewGameActivity", players);
-				startActivity(gameIntent);
+				
+				if(startGame){	
+					Intent gameIntent = new Intent(NewGameActivity.this,GameActivity.class);
+					gameIntent.putExtra("NewGameActivity", players);
+					startActivity(gameIntent);
+				}
 			}
 		}); 
+    }
+    
+    /**
+     * Check if entered player name is ok
+     * @param name The name to check
+     * @return True if name is not empty or not too long
+     */
+    private boolean nameIsOk(String name) {
+    	return (name.length() <= MAX_LENGTH && name.length() > 0);
     }
     
     public class MyOnItemSelectedListener implements OnItemSelectedListener {
