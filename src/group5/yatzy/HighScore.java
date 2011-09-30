@@ -5,6 +5,9 @@ import java.io.*;
 
 import android.content.Context;
 
+/**
+ * Class for representing a Highscore list.
+ */
 
 public class HighScore {
 
@@ -25,7 +28,7 @@ public class HighScore {
 		catch(IOException e)
 		{
 			try{
-				winners = RWHighscore.newFile(c);
+				winners = RWHighscore.newFile(c); //FileNotFoundException
 			}
 			catch(IOException e2){}
 		}	
@@ -96,6 +99,9 @@ public class HighScore {
 			winners.add(new Entry("Empty",0));
 	}
 	
+	/*
+	 * Saves the highscore list to a file.
+	 */
 	public void saveHS()
 	{
 		try{

@@ -21,6 +21,9 @@ public class YatzyActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 	
+		/**
+		 * Highscore list.
+		 */
 		hs = new HighScore(this);
 
 		/**
@@ -48,14 +51,17 @@ public class YatzyActivity extends Activity {
 		 * on event of clicked button
 		 */
 
-		/*newgButton.setOnClickListener(new OnClickListener(){
+		newgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
 				startActivity(gameIntent);
 			}
-		});*/
+		});
 		
-		
+		/**
+		 * Actionlistener for highscore button, starts highscore activity
+		 * on event of clicked button, and passes possible saved highscore to it.
+		 */
         highButton.setOnClickListener(new OnClickListener(){
         	public void onClick(View v) {
         		Intent gameIntent = new Intent(YatzyActivity.this,HighScoreActivity.class);
@@ -67,6 +73,9 @@ public class YatzyActivity extends Activity {
        
 	}
 	
+	/**
+	 * Called when pushing the clear-button in HighscoreActivity.
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
