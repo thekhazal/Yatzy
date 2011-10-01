@@ -1,15 +1,21 @@
 package group5.yatzy;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Button;
 import java.util.*;
 import android.content.Intent;
 
 /**
+ * @author Emma Bogren
  * The Activity for showing a highscore list.
  */
 
@@ -17,6 +23,7 @@ public class HighScoreActivity extends Activity
 {
 	String[] highNames;
 	int[] highScores;
+	Dialog sure;
 
 	
 	 /** Displays the highscore list and creates a clear button
@@ -38,6 +45,7 @@ public class HighScoreActivity extends Activity
         scoreTwo.setText(highNames[1] + " " + highScores[1]);
         scoreThree.setText(highNames[2] + " " + highScores[2]);
         
+        
         /**
          * When the action listener gets an event, return
          * to YatzyActivity, where onActivityResult is called,
@@ -47,10 +55,36 @@ public class HighScoreActivity extends Activity
         Button clear = (Button) findViewById(R.id.clear);
         clear.setOnClickListener(new OnClickListener(){
         public void onClick(View v) {
-        	//Add yes/no-message
-        	Intent resultIntent = getIntent();
-        	setResult(Activity.RESULT_OK,resultIntent);
-        	finish();
+        	
+        	sure = new Dialog(HighScoreActivity.this);
+        	sure.setContentView(R.layout.highdialog);
+        	sure.setTitle("Warning!");
+        	sure.setCancelable(false);
+        
+        	TextView text = (TextView) sure.findViewById(R.id.sureText);
+        	text.setText(R.string.highwarning);
+        	
+        	ImageView dice5 = (ImageView) sure.findViewById(R.id.five);
+        	dice5.setImageResource(R.drawable.five);
+        	
+        	Button yes = (Button) sure.findViewById(R.id.yes);
+        	yes.setOnClickListener(new OnClickListener(){
+        	        public void onClick(View v) {
+        	        	Intent resultIntent = getIntent();
+        	        	setResult(Activity.RESULT_OK,resultIntent);
+        	        	finish();
+        	        }
+        	});
+        	
+        	Button no = (Button) sure.findViewById(R.id.no);
+        	no.setOnClickListener(new OnClickListener(){
+        	        public void onClick(View v) {
+        	        	sure.cancel();
+        	        }
+        	});
+        	
+        	sure.show();
+ 	
 		}
         }); 
         

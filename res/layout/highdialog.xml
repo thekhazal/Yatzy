@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent" 
+    android:layout_width="fill_parent"
+    android:background="#000000" android:weightSum="1" android:orientation="vertical">
+ 
+ 	
+ 	<ImageView android:id="@+id/five" android:layout_width="30dp" android:layout_height="30dp"></ImageView>
+ 	<TextView android:id="@+id/sureText" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+ 	<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
+ 		<Button android:text="Yes" android:id="@+id/yes" android:layout_height="40dp" android:layout_width="100dp"></Button>
+ 		<Button android:text="No" android:id="@+id/no" android:layout_height="40dp" android:layout_width="100dp"></Button>
+ 	</LinearLayout>
+ 	
+</LinearLayout>

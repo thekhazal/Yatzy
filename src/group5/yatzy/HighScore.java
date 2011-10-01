@@ -6,6 +6,7 @@ import java.io.*;
 import android.content.Context;
 
 /**
+ * @author Emma Bogren
  * Class for representing a Highscore list.
  */
 
@@ -86,6 +87,7 @@ public class HighScore {
 			}
 			i++;	
 		}
+		saveHS();
 		return 0;
 	}
 	
@@ -97,12 +99,13 @@ public class HighScore {
 		winners.clear();
 		for(int i = 0; i<HS_PLACES; i++)
 			winners.add(new Entry("Empty",0));
+		saveHS();
 	}
 	
 	/*
 	 * Saves the highscore list to a file.
 	 */
-	public void saveHS()
+	private void saveHS()
 	{
 		try{
 			RWHighscore.saveHighScore(winners,c);

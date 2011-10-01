@@ -20,6 +20,8 @@
         <string name="nrofplayers">Select nr of players</string>
         <string name="names">Player names</string>
         <string name="game">Game</string>
+        <string name="highwarning">You are about to delete all highscores. Are you sure?</string>
+        <string name="winner_is">The winner is</string>
 
 	
 </resources>

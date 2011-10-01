@@ -15,6 +15,8 @@
         </activity>
         <activity android:name="NewGameActivity"></activity>
         <activity android:name="GameActivity"></activity>
+        <activity android:name="HighScoreActivity"></activity>
+         <activity android:name="FinishedGameActivity"></activity>
 
     </application>
 </manifest>

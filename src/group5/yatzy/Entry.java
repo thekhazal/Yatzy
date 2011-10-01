@@ -1,9 +1,10 @@
 package group5.yatzy;
 
 
-/*
-* Entry är en klass som representerar
-* en avbildning med en nyckel och ett värde.
+/**
+ * @author Emma Bogren
+* Entry is a class which represents an
+* entry with key and a value.
 */
 	public class Entry<K,V>
 	{
@@ -11,9 +12,8 @@ package group5.yatzy;
 		protected V value;
 
 		
-		/*
-		 * Konstruktorn tar in en nyckel och
-		 * ett värde.
+		/**
+		 * Constructor takes a key and a value.
 		 */
 		public Entry (K k,V v)
 		{
@@ -21,16 +21,16 @@ package group5.yatzy;
 			value = v;
 		}
 		
-		/*
-		 * Returnerar nyckeln för avbildningen.
+		/**
+		 * Returns the key of the entry.
 		 */
 		public K getKey()
 		{
 			return key;
 		}
 		
-		/*
-		 * Returnerar värdet för avbildningen.
+		/**
+		 * Returns the value of the entry. 
 		 */ 
 		public V getValue()
 		{
@@ -38,16 +38,16 @@ package group5.yatzy;
 		}
 		
 
-		/*
-		 * Sätter avbildningens värde.
+		/**
+		 * Sets the value of the entry to v.
 		 */ 
 		public void setValue(V v)
 		{
 			this.value = v;
 		}
 		
-		/*
-		 * Returnerar en strängrepresentation av klassen.
+		/**
+		 * Returns a String representation of the entry.
 		 */
 		public String toString()
 		{
