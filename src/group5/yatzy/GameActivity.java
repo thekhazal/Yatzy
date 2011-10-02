@@ -20,7 +20,7 @@ public class GameActivity extends Activity {
 		setContentView(R.layout.game);
 		
 		/**
-		 * List with names of players to start game with
+		 * List with names of players to start game withf
 		 */
 		playerNames = getIntent().getStringArrayListExtra("NewGameActivity");
 		
