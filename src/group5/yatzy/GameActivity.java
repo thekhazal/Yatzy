@@ -59,14 +59,8 @@ public class GameActivity extends Activity {
 			dice.add(i, new Dice());
 		}
 		
-		diceImages.add(dice1);
-		diceImages.add(dice2);
-		diceImages.add(dice3);
-		diceImages.add(dice4);
-		diceImages.add(dice5);
-		
 		/**
-		 * List with names of players to start game withf
+		* List with names of players to start game withf
 		 */
 		playerNames = getIntent().getStringArrayListExtra("NewGameActivity");
 		
@@ -102,6 +96,13 @@ public class GameActivity extends Activity {
 		dice4		= (ImageView)	findViewById(R.id.dice4);
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
+		
+		diceImages.add(dice1);
+		diceImages.add(dice2);
+		diceImages.add(dice3);
+		diceImages.add(dice4);
+		diceImages.add(dice5);
+		
 		
 		for(int i = 0; i < 5; i++){
 			
