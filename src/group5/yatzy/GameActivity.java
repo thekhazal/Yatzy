@@ -102,7 +102,7 @@ public class GameActivity extends Activity {
 		diceImages.add(dice3);
 		diceImages.add(dice4);
 		diceImages.add(dice5);
-	
+		
 		for(int i = 0; i < 5; i++){
 			if(dice.get(i).getValue() == 1)
 				diceImages.get(i).setImageResource(R.drawable.one);
@@ -118,13 +118,76 @@ public class GameActivity extends Activity {
 				diceImages.get(i).setImageResource(R.drawable.six);
 		}
 		
-		//throwButton.setOnClickListener(new OnClickListener(){
-		//	public void onClick(View v) {
+		throwButton.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				for(int i = 0; i < dice.size(); i++){
+					if(!dice.get(i).isHeld()){
+						dice.get(i).roll();
+						updateDice(dice.get(i), i);
+					}
+				}
+				nextThrow();
+			}
+		});
+		
+		dice1.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
 				
-		//	}
-		//}
+				if(!dice.get(0).isHeld()){
+					dice.get(0).setHeld(true);
+					diceImages.get(0).setImageResource(R.drawable.one);
+				}
+				
+				if(dice.get(0).isHeld()){
+					dice.get(0).setHeld(false);
+					diceImages.get(0).setImageResource(R.drawable.icon);
+				}
+			}
+		});
 		//CharSequence as = (CharSequence) playerNames.get(0);
 		//test.setText(as);
+	}
+	
+	public void updateDice(Dice dice, int diceNr) {
+		if(!dice.isHeld()){
+			if(dice.getValue() == 1)
+				diceImages.get(diceNr).setImageResource(R.drawable.one);
+			
+			if(dice.getValue() == 2)
+				diceImages.get(diceNr).setImageResource(R.drawable.two);
+			
+			if(dice.getValue() == 3)
+				diceImages.get(diceNr).setImageResource(R.drawable.three);
+			
+			if(dice.getValue() == 4)
+				diceImages.get(diceNr).setImageResource(R.drawable.four);
+			
+			if(dice.getValue() == 5)
+				diceImages.get(diceNr).setImageResource(R.drawable.five);
+			
+			if(dice.getValue() == 6)
+				diceImages.get(diceNr).setImageResource(R.drawable.six);
+		}
+		//SÄTT RÖD RAM RUNT PÅ ELSE!
+		else {
+			if(dice.getValue() == 1)
+				diceImages.get(diceNr).setImageResource(R.drawable.icon);
+			
+			if(dice.getValue() == 2)
+				diceImages.get(diceNr).setImageResource(R.drawable.icon);
+			
+			if(dice.getValue() == 3)
+				diceImages.get(diceNr).setImageResource(R.drawable.icon);
+			
+			if(dice.getValue() == 4)
+				diceImages.get(diceNr).setImageResource(R.drawable.icon);
+			
+			if(dice.getValue() == 5)
+				diceImages.get(diceNr).setImageResource(R.drawable.icon);
+			
+			if(dice.getValue() == 6)
+				diceImages.get(diceNr).setImageResource(R.drawable.icon);
+		}
 	}
 	
 	public int roundCheck() {
@@ -138,6 +201,8 @@ public class GameActivity extends Activity {
 	}
 
 	public void nextThrow() {
+		if(throwTurn == 3)
+			throwTurn = 0;
 		throwTurn++;
 	}
 }
