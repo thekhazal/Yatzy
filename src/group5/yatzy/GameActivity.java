@@ -119,11 +119,11 @@ public class GameActivity extends Activity {
 				diceImages.get(i).setBackgroundResource(R.drawable.six);
 		}
 		
-		throwButton.setOnClickListener(new OnClickListener(){
-			public void onClick(View v) {
+		//throwButton.setOnClickListener(new OnClickListener(){
+		//	public void onClick(View v) {
 				
-			}
-		}
+		//	}
+		//}
 		CharSequence as = (CharSequence) playerNames.get(0);
 		//test.setText(as);
 	}
