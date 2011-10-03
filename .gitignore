@@ -2,7 +2,7 @@
 bin/*
 gen/*
 *.class
-bin/
+
 
 .project
 .metadata
