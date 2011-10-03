@@ -7,6 +7,7 @@ import android.content.Context;
 /*
  * Class with methods to handle the 
  * file with the highscores.
+ * @Emma Bogren
  */
 
 public class RWHighscore 
@@ -56,7 +57,7 @@ public class RWHighscore
 			String[] nameScore = line.split("\\%");
 			for(int i = 0; i < nameScore.length; i++){
 				String[] oneWinner = nameScore[i].split("\\s");
-				hs.add(new Entry(oneWinner[0],Integer.parseInt(oneWinner[1])));//oneWinner[0],oneWinner[1]));
+				hs.add(new Entry(oneWinner[0],Integer.parseInt(oneWinner[1])));
 			}
 			return hs;
 		}

@@ -92,7 +92,7 @@ public class HighScore {
 	}
 	
 	/*
-	 * Empty the highscorelist and add empty scores.
+	 * Clear the highscorelist and add empty scores.
 	 */
 	public void clear()
 	{

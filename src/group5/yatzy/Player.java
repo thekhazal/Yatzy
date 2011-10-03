@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Player {
 	
 	private String name;
+	private final int BONUS = 63;
 	
 	/**
 	 * This list will be used to store the players chosen combinations during
@@ -49,17 +50,28 @@ public class Player {
 	}
 	
 	/**
-	 * @return Returns the value for the first six combinations. This will be
-	 * used to calculate if a bonus will be received or not and also shown
+	 * @return Returns the value for the first six combinations. This is 
+	 * used by hasBonus to calculate if a bonus will be received or not and also shown
 	 * on the score board during the game.
 	 */
-	public int getBonusScore() {
+	public int getSumScore() {
 		int middle = 0;
 		
 		for(int i = 0; i < 6; i++){
 			middle = middle + combos.get(i);
 		}
 		return middle;
+	}
+
+	/**
+	 * Returns true if the player gets a bonus.
+	 */
+	public boolean hasBonus()
+	{
+		int sum = getSumScore();
+		if(sum < BONUS)
+			return false;
+		return true;
 	}
 	
 	/**

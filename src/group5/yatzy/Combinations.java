@@ -18,23 +18,23 @@ public class Combinations {
 	 * @param dice: the rolled dice
 	 * @return The player combination list with the values to be chosen from.
 	 */
-	public ArrayList<Integer> calcCombos(ArrayList<Integer> playerList, int[] dice) {
+	public static  ArrayList<Integer> calcCombos(ArrayList<Integer> playerList, int[] dice) {
 
 		/**
-		 * Fields from One to Six are calculated and inserted in the list.
+		 * Fields for One to Six are calculated and inserted in the list.
 		 */
 		for (int i = 0; i < 6; i++) {
 			if (playerList.get(i) == null) 
 				this.combos.add(i, calcOnetoSix(i, dice));
 			else 
-				this.combos.add(i, playerList.get(i));
+				this.combos.add(i, 0);
 		}
 
 		/**
 		 * The "TopSum" and "Bonus" fields are not to be calculated here.
 		 */
-		this.combos.add(6, playerList.get(6));
-		this.combos.add(7, playerList.get(7));
+		this.combos.add(6, 0);
+		this.combos.add(7, 0);
 
 		/**
 		 * The Pair field gets calculated.
@@ -42,7 +42,7 @@ public class Combinations {
 		if (playerList.get(8) == null) 
 			this.combos.add(8, calcPair(dice));
 		else 
-			this.combos.add(8, playerList.get(8));
+			this.combos.add(8, 0);
 
 
 
@@ -52,7 +52,7 @@ public class Combinations {
 		if (playerList.get(9) == null)  
 			this.combos.add(9, calcTwoPair(dice));
 		else 
-			this.combos.add(9, playerList.get(9));
+			this.combos.add(9, 0);
 
 
 
@@ -62,7 +62,7 @@ public class Combinations {
 		if (playerList.get(10) == null) 
 			this.combos.add(10, calcTrips(dice));
 		else 
-			this.combos.add(10, playerList.get(10));
+			this.combos.add(10, 0);
 
 
 		/**
@@ -71,7 +71,7 @@ public class Combinations {
 		if (playerList.get(11) == null) 
 			this.combos.add(11, calcQuads(dice));
 		else 
-			this.combos.add(11, playerList.get(11));
+			this.combos.add(11, 0);
 
 
 		/**
@@ -85,7 +85,7 @@ public class Combinations {
 				this.combos.add(12, null);
 		}
 		else 
-			this.combos.add(12, playerList.get(12));
+			this.combos.add(12, 0);
 
 
 		/**
@@ -99,15 +99,15 @@ public class Combinations {
 				this.combos.add(13, null);
 		}
 		else 
-			this.combos.add(13, playerList.get(13));	
+			this.combos.add(13, 0);	
 
 		/**
-		 * The FullHouse field gets calculated.
+		 * The   field gets calculated.
 		 */
 		if (playerList.get(14) == null) 
 			this.combos.add(14, calcFullHouse(dice));
 		else 
-			this.combos.add(14, playerList.get(14));
+			this.combos.add(14, 0);
 
 		/**
 		 * The Chance field gets calculated.
@@ -115,7 +115,7 @@ public class Combinations {
 		if (playerList.get(15) == null) 
 			this.combos.add(15, calcChance(dice));
 		else 
-			this.combos.add(15, playerList.get(15));
+			this.combos.add(15, 0);
 
 		/**
 		 * The Yatzy field gets calculated.
@@ -123,12 +123,12 @@ public class Combinations {
 		if (playerList.get(16) == null) 
 			this.combos.add(16, calcYatzy(dice));
 		else 
-			this.combos.add(16, playerList.get(16));
+			this.combos.add(16, 0);
 
 		/**
 		 * The "TotalSum" field are not to be calculated here.
 		 */
-		this.combos.add(17, playerList.get(17));
+		this.combos.add(17, 0);
 
 		return combos;
 	}
@@ -143,7 +143,7 @@ public class Combinations {
 	 * @return The combination value of the sum of that specific dice value,
 	 * if no occurrence returns null.
 	 */
-	public Integer calcOnetoSix(int diceValue, int[] dice){
+	private Integer calcOnetoSix(int diceValue, int[] dice){
 		int occurence = 0;
 
 		for(int i = 0; i < 5; i++){
@@ -163,7 +163,7 @@ public class Combinations {
 	 * @return The combination value of the pair if there is a valid one,
 	 * otherwise returns null.
 	 */
-	public Integer calcPair(int[] dice) {
+	private Integer calcPair(int[] dice) {
 		dice = sort(dice);
 
 		for (int i = 0; i < 5; i++) {
@@ -179,7 +179,7 @@ public class Combinations {
 	 * @return The combination value of two pairs if there is a valid one,
 	 * otherwise returns null.
 	 */
-	public Integer calcTwoPair(int[] dice){
+	private Integer calcTwoPair(int[] dice){
 		int pair1 = 0;
 		int pair2 = 0;
 
@@ -221,7 +221,7 @@ public class Combinations {
 	 * @return The combination value of trips if there is a valid one,
 	 * otherwise returns null.
 	 */
-	public Integer calcTrips(int[] dice) {
+	private Integer calcTrips(int[] dice) {
 		dice = sort(dice);
 
 		for(int i = 0; i < 3; i++){
@@ -239,7 +239,7 @@ public class Combinations {
 	 * @return The combination value of quads if there is a valid one,
 	 * otherwise returns null.
 	 */
-	public Integer calcQuads(int[] dice) {
+	private Integer calcQuads(int[] dice) {
 		dice = sort(dice);
 
 		for(int i = 0; i < 2; i++){
@@ -252,7 +252,7 @@ public class Combinations {
 	}
 
 
-	public Integer calcStraight(int[] dice){
+	private Integer calcStraight(int[] dice){
 		dice = sort(dice);
 
 		for(int i = 0; i < 4; i++){
@@ -272,7 +272,7 @@ public class Combinations {
 	 * @return The combination value of the full house if there is a valid one,
 	 * otherwise returns null.
 	 */
-	public Integer calcFullHouse(int[] dice) {
+	private Integer calcFullHouse(int[] dice) {
 
 		Integer temp1 = 0;
 		Integer temp2 = 0;
@@ -298,7 +298,7 @@ public class Combinations {
 	 * @param dice the set of dice
 	 * @return the value of all the dice added.
 	 */
-	public Integer calcChance(int[] dice) {
+	private Integer calcChance(int[] dice) {
 		int chance = 0;
 		for (int i = 0; i < 5; i++) {
 			chance += dice[i];
@@ -311,7 +311,7 @@ public class Combinations {
 	 * @param dice set of dice.
 	 * @return If a Yatzy exists returns the value 50 otherwise returns null.
 	 */
-	public Integer calcYatzy(int[] dice) {
+	private Integer calcYatzy(int[] dice) {
 
 		dice = sort(dice);
 
@@ -327,7 +327,7 @@ public class Combinations {
 	 * @param dice The sets of dice which you want to sort.
 	 * @return A sorted array with the highest value first.
 	 */
-	public int[] sort(int[] dice) {
+	private int[] sort(int[] dice) {
 		for(int i = 0; i < dice.length; i++) {
 			for(int j = 0; j < dice.length; j++) {
 				if(dice[i] < dice[i+1]) {
