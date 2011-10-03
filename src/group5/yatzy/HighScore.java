@@ -79,7 +79,7 @@ public class HighScore {
 		int i = 1;
 		for(Entry e:winners)
 		{
-			if((Integer)e.getValue() < score)
+			if((Integer)e.getValue() <= score)
 			{
 				winners.add(new Entry(name,score));
 				winners.remove(winners.size());
