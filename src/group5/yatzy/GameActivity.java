@@ -13,10 +13,10 @@ import android.widget.TextView;
 
 public class GameActivity extends Activity {
 
-	ArrayList<Dice> dice;
-	ArrayList<ImageView> diceImages;
+	ArrayList<Dice> dice = new ArrayList<Dice>();
+	ArrayList<ImageView> diceImages = new ArrayList<ImageView>();
 	ArrayList<String> playerNames;
-	ArrayList<Player> players;
+	ArrayList<Player> players = new ArrayList<Player>();
 	int roundNr = 1;
 	int playerTurn = 1;
 	int throwTurn = 1;
@@ -49,14 +49,14 @@ public class GameActivity extends Activity {
 	ImageView dice5;
 	Button throwButton;
 	
-		/** Called when the activity is first created.*/
+	/** Called when the activity is first created.*/
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 		
 		for(int i = 0; i < 5; i++){
-			dice.add(i, new Dice());
+			dice.add(new Dice());
 		}
 		
 		/**
@@ -66,7 +66,7 @@ public class GameActivity extends Activity {
 		
 		
 		for(int i = 0; i < playerNames.size()-1; i++){
-			players.add(i, new Player(playerNames.get(i)));
+			players.add(new Player(playerNames.get(i)));
 		}
 		
 		gameText 	= (TextView) 	findViewById(R.id.headText);
@@ -84,7 +84,7 @@ public class GameActivity extends Activity {
 		trips 		= (TextView) 	findViewById(R.id.trips);
 		quads 		= (TextView) 	findViewById(R.id.quads);
 		smallStraight = (TextView) 	findViewById(R.id.smallStraight);
-		bigStraight 	= (TextView) 	findViewById(R.id.bigStraight);
+		bigStraight = (TextView) 	findViewById(R.id.bigStraight);
 		fullHouse 	= (TextView) 	findViewById(R.id.fullHouse);
 		chance 		= (TextView) 	findViewById(R.id.chance);
 		yatzy 		= (TextView) 	findViewById(R.id.yatzy);
@@ -97,30 +97,25 @@ public class GameActivity extends Activity {
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
 		
-
 		diceImages.add(dice1);
 		diceImages.add(dice2);
 		diceImages.add(dice3);
 		diceImages.add(dice4);
 		diceImages.add(dice5);
-		
-
-		
-		// TEST FÖR ATT SE ATT DET FUNKAR 
 	
 		for(int i = 0; i < 5; i++){
 			if(dice.get(i).getValue() == 1)
-				diceImages.get(i).setBackgroundResource(R.drawable.one);
+				diceImages.get(i).setImageResource(R.drawable.one);
 			if(dice.get(i).getValue() == 2)
-				diceImages.get(i).setBackgroundResource(R.drawable.two);
+				diceImages.get(i).setImageResource(R.drawable.two);
 			if(dice.get(i).getValue() == 3)
-				diceImages.get(i).setBackgroundResource(R.drawable.three);
+				diceImages.get(i).setImageResource(R.drawable.three);
 			if(dice.get(i).getValue() == 4)
-				diceImages.get(i).setBackgroundResource(R.drawable.four);
+				diceImages.get(i).setImageResource(R.drawable.four);
 			if(dice.get(i).getValue() == 5)
-				diceImages.get(i).setBackgroundResource(R.drawable.five);
-			if(dice.get(i).getValue() == 5)
-				diceImages.get(i).setBackgroundResource(R.drawable.six);
+				diceImages.get(i).setImageResource(R.drawable.five);
+			if(dice.get(i).getValue() == 6)
+				diceImages.get(i).setImageResource(R.drawable.six);
 		}
 		
 		//throwButton.setOnClickListener(new OnClickListener(){
@@ -128,7 +123,7 @@ public class GameActivity extends Activity {
 				
 		//	}
 		//}
-		CharSequence as = (CharSequence) playerNames.get(0);
+		//CharSequence as = (CharSequence) playerNames.get(0);
 		//test.setText(as);
 	}
 	
@@ -145,7 +140,4 @@ public class GameActivity extends Activity {
 	public void nextThrow() {
 		throwTurn++;
 	}
-	
-	
-	
 }
