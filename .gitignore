@@ -1,7 +1,8 @@
 # generated files
 bin/*
 gen/*
-
+*.class
+bin/
 
 .project
 .metadata
