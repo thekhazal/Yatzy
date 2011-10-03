@@ -24,8 +24,8 @@ public final class R {
         public static final int two=0x7f020007;
     }
     public static final class id {
-        public static final int bigLadder=0x7f06002e;
-        public static final int bigLadderText=0x7f06002d;
+        public static final int bigStraight=0x7f06002e;
+        public static final int bigStraightText=0x7f06002d;
         public static final int bonus=0x7f06001c;
         public static final int bonusText=0x7f06001b;
         public static final int chance=0x7f060034;
@@ -70,8 +70,8 @@ public final class R {
         public static final int scrollView1=0x7f060005;
         public static final int selectPlayersText=0x7f060050;
         public static final int sixes=0x7f060016;
-        public static final int smallLadder=0x7f06002b;
-        public static final int smallLadderText=0x7f06002a;
+        public static final int smallStraight=0x7f06002b;
+        public static final int smallStraightText=0x7f06002a;
         public static final int startButton=0x7f060057;
         public static final int startnewgametext=0x7f06004f;
         public static final int sum=0x7f060019;
@@ -105,7 +105,7 @@ public final class R {
         public static final int totalText=0x7f060039;
         public static final int trips=0x7f060025;
         public static final int tripsText=0x7f060024;
-        public static final int twoPairs=0x7f060022;
+        public static final int twoPair=0x7f060022;
         public static final int twoPairsText=0x7f060021;
         public static final int twos=0x7f06000b;
         public static final int twosText=0x7f06000a;

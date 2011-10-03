@@ -35,8 +35,8 @@ public class GameActivity extends Activity {
 	TextView twoPairs;
 	TextView trips;
 	TextView quads;
-	TextView smallLadder;
-	TextView bigLadder;
+	TextView smallStraight;
+	TextView bigStraight;
 	TextView fullHouse;
 	TextView chance;
 	TextView yatzy;
@@ -80,11 +80,11 @@ public class GameActivity extends Activity {
 		sum 		= (TextView) 	findViewById(R.id.sum);
 		bonus 		= (TextView) 	findViewById(R.id.bonus);
 		onePair 	= (TextView) 	findViewById(R.id.onePair);
-		twoPairs 	= (TextView) 	findViewById(R.id.twoPairs);
+		twoPairs 	= (TextView) 	findViewById(R.id.twoPair);
 		trips 		= (TextView) 	findViewById(R.id.trips);
 		quads 		= (TextView) 	findViewById(R.id.quads);
-		smallLadder = (TextView) 	findViewById(R.id.smallLadder);
-		bigLadder 	= (TextView) 	findViewById(R.id.bigLadder);
+		smallStraight = (TextView) 	findViewById(R.id.smallStraight);
+		bigStraight 	= (TextView) 	findViewById(R.id.bigStraight);
 		fullHouse 	= (TextView) 	findViewById(R.id.fullHouse);
 		chance 		= (TextView) 	findViewById(R.id.chance);
 		yatzy 		= (TextView) 	findViewById(R.id.yatzy);
@@ -97,15 +97,18 @@ public class GameActivity extends Activity {
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
 		
+
 		diceImages.add(dice1);
 		diceImages.add(dice2);
 		diceImages.add(dice3);
 		diceImages.add(dice4);
 		diceImages.add(dice5);
 		
+
 		
+		// TEST FÖR ATT SE ATT DET FUNKAR 
+	
 		for(int i = 0; i < 5; i++){
-			
 			if(dice.get(i).getValue() == 1)
 				diceImages.get(i).setBackgroundResource(R.drawable.one);
 			if(dice.get(i).getValue() == 2)

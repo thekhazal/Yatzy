@@ -45,7 +45,7 @@
                 	</TableRow>
             		<TableRow android:id="@+id/tableRow10" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 		<TextView android:id="@+id/twoPairsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Two pairs"></TextView>
-                		<TextView android:id="@+id/twoPairs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
+                		<TextView android:id="@+id/twoPair" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow11" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 		<TextView android:id="@+id/tripsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trips"></TextView>
@@ -56,12 +56,12 @@
                 		<TextView android:id="@+id/quads" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow13" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                		<TextView android:id="@+id/smallLadderText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Small straight"></TextView>
-                		<TextView android:id="@+id/smallLadder" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
+                		<TextView android:id="@+id/smallStraightText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Small straight"></TextView>
+                		<TextView android:id="@+id/smallStraight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow14" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                		<TextView android:id="@+id/bigLadderText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Big straight"></TextView>
-               		<TextView android:id="@+id/bigLadder" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
+                		<TextView android:id="@+id/bigStraightText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Big straight"></TextView>
+               			<TextView android:id="@+id/bigStraight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow15" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 		<TextView android:id="@+id/fullHouseText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Full house"></TextView>
