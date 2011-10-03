@@ -103,8 +103,10 @@ public class GameActivity extends Activity {
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
 		
+		
+		// TEST FÖR ATT SE ATT DET FUNKAR 
+		
 		for(int i = 0; i < 5; i++){
-			
 			if(dice.get(i).getValue() == 1)
 				diceImages.get(i).setBackgroundResource(R.drawable.one);
 			if(dice.get(i).getValue() == 2)
