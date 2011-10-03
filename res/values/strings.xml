@@ -22,6 +22,8 @@
         <string name="game">Game</string>
         <string name="highwarning">You are about to delete all highscores. Are you sure?</string>
         <string name="winner_is">The winner is</string>
+        <string name="combosText">Combos</string>
+        <string name="space"></string>
 
 	
 </resources>

@@ -24,7 +24,7 @@ public class GameActivity extends Activity {
 		 */
 		playerNames = getIntent().getStringArrayListExtra("NewGameActivity");
 		
-		TextView test = (TextView) findViewById(R.id.gameText);
+		TextView test = (TextView) findViewById(R.id.headText);
 		
 		CharSequence as = (CharSequence) playerNames.get(0);
 		test.setText(as);
