@@ -32,13 +32,13 @@ public final class R {
         public static final int chanceText=0x7f060033;
         public static final int clear=0x7f06004b;
         public static final int combosText=0x7f060003;
-        public static final int dice1=0x7f06003d;
-        public static final int dice2=0x7f06003e;
-        public static final int dice3=0x7f06003f;
-        public static final int dice4=0x7f060040;
-        public static final int dice5=0x7f060041;
-        public static final int doneButton=0x7f06003b;
-        public static final int five=0x7f060043;
+        public static final int dice1=0x7f06003e;
+        public static final int dice2=0x7f06003f;
+        public static final int dice3=0x7f060040;
+        public static final int dice4=0x7f060041;
+        public static final int dice5=0x7f060042;
+        public static final int doneButton=0x7f06003c;
+        public static final int five=0x7f060044;
         public static final int fives=0x7f060014;
         public static final int fivesText=0x7f060013;
         public static final int fours=0x7f060011;
@@ -47,7 +47,7 @@ public final class R {
         public static final int fullHouseText=0x7f060030;
         public static final int headText=0x7f060001;
         public static final int highscore=0x7f06004e;
-        public static final int linearLayout1=0x7f060045;
+        public static final int linearLayout1=0x7f06003b;
         public static final int name1=0x7f060048;
         public static final int name2=0x7f060049;
         public static final int name3=0x7f06004a;
@@ -76,7 +76,7 @@ public final class R {
         public static final int startnewgametext=0x7f06004f;
         public static final int sum=0x7f060019;
         public static final int sumText=0x7f060018;
-        public static final int sureText=0x7f060044;
+        public static final int sureText=0x7f060045;
         public static final int tableLayout1=0x7f060000;
         public static final int tableLayout2=0x7f060006;
         public static final int tableRow1=0x7f060002;
@@ -89,7 +89,7 @@ public final class R {
         public static final int tableRow16=0x7f060032;
         public static final int tableRow17=0x7f060035;
         public static final int tableRow18=0x7f060038;
-        public static final int tableRow19=0x7f06003c;
+        public static final int tableRow19=0x7f06003d;
         public static final int tableRow2=0x7f060009;
         public static final int tableRow3=0x7f06000c;
         public static final int tableRow4=0x7f06000f;
@@ -100,7 +100,7 @@ public final class R {
         public static final int tableRow9=0x7f06001d;
         public static final int threes=0x7f06000e;
         public static final int threesText=0x7f06000d;
-        public static final int throwButton=0x7f060042;
+        public static final int throwButton=0x7f060043;
         public static final int total=0x7f06003a;
         public static final int totalText=0x7f060039;
         public static final int trips=0x7f060025;

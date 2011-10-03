@@ -5,8 +5,8 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/combosText" android:id="@+id/combosText"></TextView>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/playerNameText" android:text="@string/space"></TextView>
         </TableRow>
-        <ScrollView android:id="@+id/scrollView1" android:layout_width="wrap_content" android:layout_height="390dip">
-                <TableLayout android:layout_width="wrap_content" android:id="@+id/tableLayout2" android:layout_height="390dip">
+        <ScrollView android:id="@+id/scrollView1" android:layout_width="wrap_content" android:layout_height="300dip">
+                <TableLayout android:layout_width="wrap_content" android:id="@+id/tableLayout2" android:layout_height="300dip">
             		<TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 		<TextView android:id="@+id/onesText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1's"></TextView>
                 		<TextView android:id="@+id/ones" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
@@ -56,11 +56,11 @@
                 		<TextView android:id="@+id/quads" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow13" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                		<TextView android:id="@+id/smallLadderText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Small ladder"></TextView>
+                		<TextView android:id="@+id/smallLadderText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Small straight"></TextView>
                 		<TextView android:id="@+id/smallLadder" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow14" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                		<TextView android:id="@+id/bigLadderText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Big ladder"></TextView>
+                		<TextView android:id="@+id/bigLadderText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Big straight"></TextView>
                		<TextView android:id="@+id/bigLadder" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
             		</TableRow>
             		<TableRow android:id="@+id/tableRow15" android:layout_width="wrap_content" android:layout_height="wrap_content">
@@ -78,11 +78,13 @@
             		<TableRow android:id="@+id/tableRow18" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 		<TextView android:id="@+id/totalText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total"></TextView>
                 		<TextView android:id="@+id/total" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/space" android:background="@drawable/background"></TextView>
-            			<Button android:id="@+id/doneButton" android:text="Done" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
             		</TableRow>
             	</TableLayout>    
         </ScrollView>
-    <TableLayout android:id="@+id/tableLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:orientation="vertical">
+            <Button android:text="Done" android:id="@+id/doneButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="right" android:layout_marginRight="14dip"></Button>
+        </LinearLayout>	     
+	<TableLayout android:id="@+id/tableLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
    
      <TableRow android:id="@+id/tableRow19" android:layout_width="wrap_content" android:layout_height="wrap_content">
 			<ImageView android:id="@+id/dice1" android:src="@drawable/one" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
