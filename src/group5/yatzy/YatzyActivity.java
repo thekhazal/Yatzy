@@ -1,6 +1,5 @@
 package group5.yatzy;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 public class YatzyActivity extends Activity {
 	
-
 	private Button resgButton;
 	private Button newgButton;
 	private Button highButton;
@@ -62,8 +60,7 @@ public class YatzyActivity extends Activity {
 		newgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
-				startActivity(gameIntent);
-				
+				startActivity(gameIntent);	
 			}
 		});
 		
@@ -79,7 +76,6 @@ public class YatzyActivity extends Activity {
         		startActivityForResult(gameIntent,0);
         	}
         }); 
-       
 	}
 	
 	/**
@@ -89,7 +85,6 @@ public class YatzyActivity extends Activity {
 		if (!RWState.fileExists())
 			resgButton.setVisibility(TextView.INVISIBLE);
 	}
-	
 	
 	/**
 	 * Called when pushing the clear-button in HighscoreActivity.
