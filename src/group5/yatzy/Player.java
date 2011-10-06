@@ -9,9 +9,8 @@ import java.util.ArrayList;
 public class Player {
 	
 	private String name;
-	private final int BONUSPOINTS = 63;
-	private final int BONUS = 50;
- 	
+	private final int BONUS = 63;
+	
 	/**
 	 * This list will be used to store the players chosen combinations during
 	 * the game.
@@ -24,8 +23,11 @@ public class Player {
 	**/
 	public Player(String name) { 
 		this.name = name;
-		this.combos = new ArrayList<Integer>(18);
-		this.combos.add(17, 0);
+		this.combos = new ArrayList<Integer>();
+		for(int i = 0; i < 18; i++){
+			this.combos.add(null);
+		}
+		this.combos.set(17, 0);
 	}
 	
 	public String getName() {
@@ -34,20 +36,12 @@ public class Player {
 	
 	/**
 	 * Updates the player score list with the chosen combination.
-	 * Also updates the sums and calculates if a bouns has been earned.
 	 * @param position The combination number chosen.
 	 * @param score The calculated score for the specific position. 
 	 * @return Returns the updated score list.
 	 */
 	public ArrayList<Integer> updateCombos(int position, int score) {
 		combos.set(position, score);
-		if (position < 6) {
-			combos.set(6, (combos.get(6)+score));
-			if (combos.get(6) >= BONUSPOINTS)
-				combos.set(7, BONUS);
-		}
-		combos.set(17, (combos.get(17)+score));
-		
 		return combos;
 	}
 	
