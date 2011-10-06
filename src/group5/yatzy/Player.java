@@ -23,8 +23,11 @@ public class Player {
 	**/
 	public Player(String name) { 
 		this.name = name;
-		this.combos = new ArrayList<Integer>(18);
-		this.combos.add(17, 0);
+		this.combos = new ArrayList<Integer>();
+		for(int i = 0; i < 18; i++){
+			this.combos.add(null);
+		}
+		this.combos.set(17, 0);
 	}
 	
 	public String getName() {

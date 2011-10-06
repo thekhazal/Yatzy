@@ -88,10 +88,10 @@
    
      <TableRow android:id="@+id/tableRow19" android:layout_width="wrap_content" android:layout_height="wrap_content">
 			<ImageView android:id="@+id/dice1" android:src="@drawable/one" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
- 			<ImageView android:id="@+id/dice2" android:src="@drawable/one" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
-     		<ImageView android:id="@+id/dice3" android:src="@drawable/one" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
-     		<ImageView android:id="@+id/dice4" android:src="@drawable/one" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
-     		<ImageView android:id="@+id/dice5" android:src="@drawable/one" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
+ 			<ImageView android:id="@+id/dice2" android:src="@drawable/two" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
+     		<ImageView android:id="@+id/dice3" android:src="@drawable/three" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
+     		<ImageView android:id="@+id/dice4" android:src="@drawable/four" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
+     		<ImageView android:id="@+id/dice5" android:src="@drawable/five" android:layout_height="50dip" android:layout_width="50dip"></ImageView>
 			<Button android:id="@+id/throwButton" android:text="Throw" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>	     
      </TableRow>
       </TableLayout>

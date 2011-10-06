@@ -45,6 +45,14 @@ package group5.yatzy;
 		{
 			this.value = v;
 		}
+
+		/**
+		 * Sets the key of the entry to k.
+		 */ 
+		public void setKey(K k)
+		{
+			this.key = k;
+		}
 		
 		/**
 		 * Returns a String representation of the entry.

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 /**
  * This class controls the game flow and updates the game.xml. 
- * @author Daniel Gunnarsson, Viktor Swantesson
+ * @author Anmar Khazal, Johan Grundén, Daniel Gunnarsson, Viktor Swantesson
  *
  */
 public class GameActivity extends Activity {
@@ -51,13 +51,16 @@ public class GameActivity extends Activity {
 	TextView chance;
 	TextView yatzy;
 	TextView total;
-	Button done;
+	Button doneButton;
 	ImageView dice1;
 	ImageView dice2;
 	ImageView dice3;
 	ImageView dice4;
 	ImageView dice5;
 	Button throwButton;
+
+	// Save current choice with two integers (position in player combo list, value at position)
+	Entry<Integer,Integer> currentChoice = new Entry<Integer,Integer>(null, null);
 
 	/** Called when the activity is first created.*/
 	@Override
@@ -85,20 +88,25 @@ public class GameActivity extends Activity {
 		chance 		= (TextView) 	findViewById(R.id.chance);
 		yatzy 		= (TextView) 	findViewById(R.id.yatzy);
 		total 		= (TextView) 	findViewById(R.id.total);
-		done		= (Button)		findViewById(R.id.doneButton);
+		doneButton	= (Button)		findViewById(R.id.doneButton);
 		dice1		= (ImageView)	findViewById(R.id.dice1);
 		dice2		= (ImageView)	findViewById(R.id.dice2);
 		dice3		= (ImageView)	findViewById(R.id.dice3);	
 		dice4		= (ImageView)	findViewById(R.id.dice4);
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
-
+	
+		
+		for(int i = 0; i < 5; i++){
+			tempDice.add(null);
+		}
 		/**
 		 * The combinations are being added to the comboTextViews' list.
 		 */
 		for(int i = 0; i < 18; i++){
 			comboTextViews.add(null);
 		}
+		
 		
 		comboTextViews.set(0,ones);
 		comboTextViews.set(1,twos);
@@ -119,6 +127,9 @@ public class GameActivity extends Activity {
 		comboTextViews.set(16,yatzy);
 		comboTextViews.set(17,total);
 		
+		// Set all combos unclickable
+		newTurn();
+		
 		/**
 		 * Creates the five dice.
 		 */
@@ -136,17 +147,20 @@ public class GameActivity extends Activity {
 		diceImages.add(dice5);
 
 		/**
-		 * List with names of players to start game withf
+		 * List with names of players to start game with
 		 */
 		playerNames = getIntent().getStringArrayListExtra("NewGameActivity");
 
 		/**
 		 * Puts all the players in the "players"-list.
 		 */
-		for(int i = 0; i < playerNames.size()-1; i++){
+		for(int i = 0; i < playerNames.size(); i++){
 			players.add(new Player(playerNames.get(i)));
 		}
 
+		// Set name for first player
+		playerName.setText((CharSequence) players.get(playerTurn).getName());
+		
 		/**
 		 * Only happens once when the game is started for the first time to
 		 * give all the five dice random numbers when started.
@@ -167,6 +181,217 @@ public class GameActivity extends Activity {
 		}
 
 		/**
+		 * Listener for selection of ones combination
+		 */
+		ones.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(0);
+				currentChoice.setValue(tempCombos.get(0));
+			}
+		});
+		
+		/**
+		 * Listener for selection of twos combination
+		 */
+		twos.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(1);
+				currentChoice.setValue(tempCombos.get(1));
+			}
+		});
+		
+		/**
+		 * Listener for selection of threes combination
+		 */
+		threes.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(2);
+				currentChoice.setValue(tempCombos.get(2));
+			}
+		});
+		
+		/**
+		 * Listener for selection of fours combination
+		 */
+		fours.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(3);
+				currentChoice.setValue(tempCombos.get(3));
+			}
+		});
+		
+		/**
+		 * Listener for selection of fives combination
+		 */
+		fives.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(4);
+				currentChoice.setValue(tempCombos.get(4));
+			}
+		});
+		
+		/**
+		 * Listener for selection of sixes combination
+		 */
+		sixes.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(5);
+				currentChoice.setValue(tempCombos.get(5));
+			}
+		});
+		
+		/**
+		 * Listener for selection of sixes combination
+		 */
+		sixes.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(5);
+				currentChoice.setValue(tempCombos.get(5));
+			}
+		});
+		
+		/**
+		 * Listener for selection of one pair combination
+		 */
+		onePair.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(8);
+				currentChoice.setValue(tempCombos.get(8));
+			}
+		});
+		
+		/**
+		 * Listener for selection of two pair combination
+		 */
+		twoPairs.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(9);
+				currentChoice.setValue(tempCombos.get(9));
+			}
+		});
+		
+		/**
+		 * Listener for selection of trips combination
+		 */
+		trips.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(10);
+				currentChoice.setValue(tempCombos.get(10));
+			}
+		});
+		
+		/**
+		 * Listener for selection of quads combination
+		 */
+		quads.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(11);
+				currentChoice.setValue(tempCombos.get(11));
+			}
+		});
+		
+		/**
+		 * Listener for selection of small straight combination
+		 */
+		smallStraight.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(12);
+				currentChoice.setValue(tempCombos.get(12));
+			}
+		});
+		
+		/**
+		 * Listener for selection of big straight combination
+		 */
+		bigStraight.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(13);
+				currentChoice.setValue(tempCombos.get(13));
+			}
+		});
+		
+		/**
+		 * Listener for selection of full house combination
+		 */
+		fullHouse.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(14);
+				currentChoice.setValue(tempCombos.get(14));
+			}
+		});
+		
+		/**
+		 * Listener for selection of chance combination
+		 */
+		chance.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(15);
+				currentChoice.setValue(tempCombos.get(15));
+			}
+		});
+		
+		/**
+		 * Listener for selection of yatzy combination
+		 */
+		yatzy.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				currentChoice.setKey(16);
+				currentChoice.setValue(tempCombos.get(16));
+			}
+		});
+		
+		/**
+		 * Listener for Done button
+		 */
+		doneButton.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(currentChoice.getKey() != null) {
+					players.get(playerTurn).updateCombos(currentChoice.getKey(), currentChoice.getValue());
+					
+					// Update "middle" sum
+					comboTextViews.get(6).setText((CharSequence) Integer.toString(players.get(playerTurn).getSumScore()));
+					
+					// Update bonus
+					if(players.get(playerTurn).hasBonus()) {
+						players.get(playerTurn).updateCombos(7,50);
+						comboTextViews.get(7).setText((CharSequence) Integer.toString(players.get(playerTurn).getCombos().get(7)));
+					}
+					// Update total score
+					comboTextViews.get(17).setText((CharSequence) Integer.toString(players.get(playerTurn).getTotalScore()));
+										
+					//Check if last player has finished last throw
+					if((playerTurn == players.size()) && roundCheck() == 15) 
+						winner();
+					
+					// Last Player has not finished his last throw
+					else{
+						
+						//Check if last player has made throw, then increase roundNr
+						if(playerTurn == players.size())
+							//roundNr++;
+						
+						// Next players turn
+						nextPlayer();
+						
+						// Update the table with next players scores.
+						ArrayList<Integer> temp = players.get(playerTurn).getCombos();
+						for(int i = 0; i < temp.size(); i++) {
+							if(temp.get(i) != null) {
+								comboTextViews.get(i).setText((CharSequence) Integer.toString(temp.get(i)));
+							}
+							else {
+								comboTextViews.get(i).setText(" ");
+							}
+						}
+						
+						// Set all combos unclickable
+						newTurn();
+					}
+				}
+			}
+		});
+		
+		/**
 		 * Listener for the throw button. Checks if a dice is being held or not
 		 * before throwing a dice. If held nothing happens. After each 
 		 */
@@ -179,7 +404,7 @@ public class GameActivity extends Activity {
 						updateDice(dice.get(i), i);
 					}
 				}
-				//updateTempCombos(dice);
+				updateTempCombos(dice);
 				nextThrow();
 			}
 		});
@@ -228,8 +453,7 @@ public class GameActivity extends Activity {
 				}
 			}
 		});
-		//CharSequence as = (CharSequence) playerNames.get(0);
-		//test.setText(as);
+
 	}
 
 	private void updateTempCombos(ArrayList<Dice> dice) {
@@ -237,20 +461,18 @@ public class GameActivity extends Activity {
 			tempDice.set(i, dice.get(i).getValue());
 		}
 		
-		Integer temp = Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice).get(0);
-		//comboTextViews.get(0).setText((CharSequence) temp.toString());
-		
-		/*tempCombos.set(0,Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice).get(0));
-		CharSequence temp = (CharSequence) tempCombos.get(0).toString();*/
-		if(temp != null)
-			comboTextViews.get(0).setText((CharSequence) Integer.toString(temp));
-		/*
+		Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice);
 		for(int i = 0; i < 18; i++){
-			if(Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDices).get(i) != 0){
-				CharSequence temp = (CharSequence) tempCombos.get(0).toString();
-				comboTextViews.get(0).setText(temp);
+			tempCombos.add(null);
+			tempCombos.set(i, Combinations.combos.get(i));
+		}
+
+		for(int i = 0; i < 18; i++){
+			if(tempCombos.get(i) != null) {
+				comboTextViews.get(i).setText((CharSequence) Integer.toString(tempCombos.get(i)));
+				comboTextViews.get(i).setClickable(true);
 			}
-		}*/
+		}
 	}
 	
 	/**
@@ -327,10 +549,14 @@ public class GameActivity extends Activity {
 		return roundNr;
 	}
 
+	/**
+	 * Update so the next player is current player, also update player name in text field
+	 */
 	public void nextPlayer() {
 		playerTurn++;
 		if (playerTurn >= players.size())
-			playerTurn = 1;
+			playerTurn = 0;
+		playerName.setText((CharSequence) players.get(playerTurn).getName());
 	}
 
 	/**
@@ -341,6 +567,30 @@ public class GameActivity extends Activity {
 		throwTurn++;
 
 		if(throwTurn == 3)
-			throwButton.setClickable(false);
+			throwButton.setClickable(false);	
+	}
+	
+	/**
+	 * For each new turn, set all combinations unclickable
+	 */
+	private void newTurn(){
+		throwTurn = 0;
+		throwButton.setClickable(true);
+		currentChoice.setKey(null);
+		currentChoice.setValue(null);
+		for(int i = 0; i < comboTextViews.size(); i++) {
+			comboTextViews.get(0).setClickable(false);
+		}
+		for(int i = 0; i < dice.size(); i++){
+			dice.get(i).setHeld(false);
+			updateDice(dice.get(i), i);
+		}
+	}
+	
+	/**
+	 * Calculate the winner
+	 */
+	private void winner(){
+		
 	}
 }

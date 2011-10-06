@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Combinations {
 
-	private static ArrayList<Integer> combos = new ArrayList<Integer>();
+	public static ArrayList<Integer> combos = new ArrayList<Integer>();
 	private static Integer temp = 0;
 
 	
@@ -19,7 +19,7 @@ public class Combinations {
 	 * @param dice: the rolled dice
 	 * @return The player combination list with the values to be chosen from.
 	 */
-	public static ArrayList<Integer> calcCombos(ArrayList<Integer> playerList, ArrayList<Integer> dice) {
+	public static void calcCombos(ArrayList<Integer> playerList, ArrayList<Integer> dice) {
 		for(int i = 0; i < 18; i++){
 			combos.add(null);
 		}
@@ -37,8 +37,8 @@ public class Combinations {
 		/**
 		 * The "TopSum" and "Bonus" fields are not to be calculated here.
 		 */
-		combos.set(6, null);
-		combos.set(7, null);
+		combos.set(6, 0);
+		combos.set(7, 0);
 
 		/**
 		 * The Pair field gets calculated.
@@ -89,7 +89,7 @@ public class Combinations {
 				combos.set(12, null);
 		}
 		else 
-			combos.set(12, null);
+			combos.set(12, 0);
 
 
 		/**
@@ -132,9 +132,9 @@ public class Combinations {
 		/**
 		 * The "TotalSum" field are not to be calculated here.
 		 */
-		combos.set(17, null);
-
-		return combos;
+		combos.set(17, 0);
+		
+		//return combos;
 	}
 
 

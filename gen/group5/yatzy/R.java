@@ -22,12 +22,13 @@ public final class R {
         public static final int icon=0x7f020005;
         public static final int one=0x7f020006;
         public static final int oneheld=0x7f020007;
-        public static final int six=0x7f020008;
-        public static final int sixheld=0x7f020009;
-        public static final int three=0x7f02000a;
-        public static final int threeheld=0x7f02000b;
-        public static final int two=0x7f02000c;
-        public static final int twoheld=0x7f02000d;
+        public static final int selected=0x7f020008;
+        public static final int six=0x7f020009;
+        public static final int sixheld=0x7f02000a;
+        public static final int three=0x7f02000b;
+        public static final int threeheld=0x7f02000c;
+        public static final int two=0x7f02000d;
+        public static final int twoheld=0x7f02000e;
     }
     public static final class id {
         public static final int bigStraight=0x7f06002e;
