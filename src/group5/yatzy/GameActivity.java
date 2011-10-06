@@ -19,11 +19,15 @@ import android.widget.TextView;
 public class GameActivity extends Activity {
 
 	ArrayList<Dice> dice = new ArrayList<Dice>();
+	ArrayList<TextView> comboTextViews = new ArrayList<TextView>();
 	ArrayList<ImageView> diceImages = new ArrayList<ImageView>();
 	ArrayList<String> playerNames;
 	ArrayList<Player> players = new ArrayList<Player>();
-	int roundNr = 1;
-	int playerTurn = 1;
+	ArrayList<Integer> tempCombos = new ArrayList<Integer>();
+	ArrayList<Integer> tempDice = new ArrayList<Integer>();
+
+	int roundNr = 0;
+	int playerTurn = 0;
 	int throwTurn = 0;
 	int diceBeingHeld = 0;
 
@@ -90,6 +94,28 @@ public class GameActivity extends Activity {
 		throwButton = (Button)		findViewById(R.id.throwButton);
 
 		/**
+		 * The combinations are being added to the comboTextViews' list.
+		 */
+		comboTextViews.set(0,ones);
+		comboTextViews.add(twos);
+		comboTextViews.add(threes);
+		comboTextViews.add(fours);
+		comboTextViews.add(fives);
+		comboTextViews.add(sixes);
+		comboTextViews.add(sum);
+		comboTextViews.add(bonus);
+		comboTextViews.add(onePair);
+		comboTextViews.add(twoPairs);
+		comboTextViews.add(trips);
+		comboTextViews.add(quads);
+		comboTextViews.add(smallStraight);
+		comboTextViews.add(bigStraight);
+		comboTextViews.add(fullHouse);
+		comboTextViews.add(chance);
+		comboTextViews.add(yatzy);
+		comboTextViews.add(total);
+		
+		/**
 		 * Creates the five dice.
 		 */
 		for(int i = 0; i < 5; i++){
@@ -149,6 +175,7 @@ public class GameActivity extends Activity {
 						updateDice(dice.get(i), i);
 					}
 				}
+				updateTempCombos(dice);
 				nextThrow();
 			}
 		});
@@ -201,6 +228,27 @@ public class GameActivity extends Activity {
 		//test.setText(as);
 	}
 
+	private void updateTempCombos(ArrayList<Dice> dice) {
+		for(int i = 0; i < dice.size(); i++){
+			tempDice.set(i, dice.get(i).getValue());
+		}
+		
+		Integer temp = Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice).get(0);
+		//comboTextViews.get(0).setText((CharSequence) temp.toString());
+		
+		/*tempCombos.set(0,Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice).get(0));
+		CharSequence temp = (CharSequence) tempCombos.get(0).toString();*/
+		if(temp != null)
+			comboTextViews.get(0).setText((CharSequence) Integer.toString(temp));
+		/*
+		for(int i = 0; i < 18; i++){
+			if(Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDices).get(i) != 0){
+				CharSequence temp = (CharSequence) tempCombos.get(0).toString();
+				comboTextViews.get(0).setText(temp);
+			}
+		}*/
+	}
+	
 	/**
 	 * This method updates a dice current holding status with the inverse
 	 * boolean value.

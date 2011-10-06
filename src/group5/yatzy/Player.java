@@ -38,7 +38,7 @@ public class Player {
 	 * @return Returns the updated score list.
 	 */
 	public ArrayList<Integer> updateCombos(int position, int score) {
-		combos.add(position, score);
+		combos.set(position, score);
 		return combos;
 	}
 	
