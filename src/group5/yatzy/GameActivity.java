@@ -96,24 +96,28 @@ public class GameActivity extends Activity {
 		/**
 		 * The combinations are being added to the comboTextViews' list.
 		 */
+		for(int i = 0; i < 18; i++){
+			comboTextViews.add(null);
+		}
+		
 		comboTextViews.set(0,ones);
-		comboTextViews.add(twos);
-		comboTextViews.add(threes);
-		comboTextViews.add(fours);
-		comboTextViews.add(fives);
-		comboTextViews.add(sixes);
-		comboTextViews.add(sum);
-		comboTextViews.add(bonus);
-		comboTextViews.add(onePair);
-		comboTextViews.add(twoPairs);
-		comboTextViews.add(trips);
-		comboTextViews.add(quads);
-		comboTextViews.add(smallStraight);
-		comboTextViews.add(bigStraight);
-		comboTextViews.add(fullHouse);
-		comboTextViews.add(chance);
-		comboTextViews.add(yatzy);
-		comboTextViews.add(total);
+		comboTextViews.set(1,twos);
+		comboTextViews.set(2,threes);
+		comboTextViews.set(3,fours);
+		comboTextViews.set(4,fives);
+		comboTextViews.set(5,sixes);
+		comboTextViews.set(6,sum);
+		comboTextViews.set(7,bonus);
+		comboTextViews.set(8,onePair);
+		comboTextViews.set(9,twoPairs);
+		comboTextViews.set(10,trips);
+		comboTextViews.set(11,quads);
+		comboTextViews.set(12,smallStraight);
+		comboTextViews.set(13,bigStraight);
+		comboTextViews.set(14,fullHouse);
+		comboTextViews.set(15,chance);
+		comboTextViews.set(16,yatzy);
+		comboTextViews.set(17,total);
 		
 		/**
 		 * Creates the five dice.
@@ -175,7 +179,7 @@ public class GameActivity extends Activity {
 						updateDice(dice.get(i), i);
 					}
 				}
-				updateTempCombos(dice);
+				//updateTempCombos(dice);
 				nextThrow();
 			}
 		});
