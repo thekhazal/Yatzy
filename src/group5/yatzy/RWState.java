@@ -12,7 +12,7 @@ public class RWState {
 	 * This method saves a current game.
 	 * @param gamestate: the gamestate.
 	 */
-	public void writeState(GameState gamestate) {
+	public static void writeState(GameState gamestate) {
 		ObjectOutputStream outputStream = null;
 
 		File state = new File("state");
@@ -28,7 +28,7 @@ public class RWState {
 	 * This method loads a previously saved gamestate.
 	 * @return gamestate.
 	 */
-	public GameState readState() {
+	public static GameState readState() {
 		ObjectInputStream inputStream = null;
 		GameState gamestate = null;
 		try {
@@ -46,7 +46,7 @@ public class RWState {
 	 * resumed.
 	 * @return true if exists, false if not.
 	 */
-	public boolean fileExists() {
+	public static boolean fileExists() {
 		File state = new File("state");
 		boolean exists = state.exists();
 		return exists;
@@ -55,7 +55,7 @@ public class RWState {
 	/**
 	 * This method is used to delete a saved game.
 	 */
-	public void deleteFile() {
+	public static void deleteFile() {
 		File state = new File("state");
 		state.delete();
 	}
