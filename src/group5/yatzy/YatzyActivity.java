@@ -1,12 +1,12 @@
 package group5.yatzy;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class YatzyActivity extends Activity {
 	
@@ -34,15 +34,22 @@ public class YatzyActivity extends Activity {
 		newgButton = (Button) findViewById(R.id.newgame);
 		highButton = (Button) findViewById(R.id.highscore);
 
-
+		
+		/**
+		 * Hide the resume game button if no game is saved.
+		 */
+		if (RWState.fileExists())
+			resgButton.setVisibility(TextView.INVISIBLE);
+		
 		/**
 		 * Actionlistener for resume game button, terminates application so far
 		 * on event of clicked button
 		 */
-		
 		resgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
-				finish();
+        		Intent gameIntent = new Intent(YatzyActivity.this,GameActivity.class);
+        		gameIntent.putExtra("Resume", true);
+        		startActivityForResult(gameIntent,0);
 			}
 		}); 
 		
@@ -50,11 +57,10 @@ public class YatzyActivity extends Activity {
 		 * Actionlistener for new game button, starts new game activity
 		 * on event of clicked button
 		 */
-
 		newgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
-				startActivity(gameIntent);
+				startActivity(gameIntent);	
 			}
 		});
 		
@@ -70,7 +76,14 @@ public class YatzyActivity extends Activity {
         		startActivityForResult(gameIntent,0);
         	}
         }); 
-       
+	}
+	
+	/**
+	 * Method to hide the resume game button if no such game is available.
+	 */
+	public void onResume() {
+		if (!RWState.fileExists())
+			resgButton.setVisibility(TextView.INVISIBLE);
 	}
 	
 	/**
