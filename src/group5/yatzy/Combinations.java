@@ -150,7 +150,7 @@ public class Combinations {
 	private static Integer calcOnetoSix(int diceValue, ArrayList<Integer> dice){
 		int occurence = 0;
 
-		for(int i = 0; i < dice.size()-1; i++){
+		for(int i = 0; i < dice.size(); i++){
 			if(diceValue == dice.get(i)){
 				occurence++;
 			}
