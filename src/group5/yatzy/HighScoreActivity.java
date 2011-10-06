@@ -58,7 +58,6 @@ public class HighScoreActivity extends Activity
         	sure.setCancelable(false);
         
         	TextView text = (TextView) sure.findViewById(R.id.sureText);
-        	text.setText(R.string.highwarning);
         	
         	ImageView dice5 = (ImageView) sure.findViewById(R.id.five);
         	dice5.setImageResource(R.drawable.five);
