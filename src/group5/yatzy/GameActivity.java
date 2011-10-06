@@ -348,19 +348,22 @@ public class GameActivity extends Activity {
 				if(currentChoice.getKey() != null) {
 					players.get(playerTurn).updateCombos(currentChoice.getKey(), currentChoice.getValue());
 					
+					/** ÄNDRA PLATS
 					// Update "middle" sum
-					comboTextViews.get(6).setText((CharSequence) Integer.toString(players.get(playerTurn).getSumScore()));
+					//sum.setText((CharSequence) Integer.toString(100));
 					
 					// Update bonus
-					if(players.get(playerTurn).hasBonus()) {
-						players.get(playerTurn).updateCombos(7,50);
-						comboTextViews.get(7).setText((CharSequence) Integer.toString(players.get(playerTurn).getCombos().get(7)));
-					}
+					//if(players.get(playerTurn).hasBonus()) {
+						//players.get(playerTurn).updateCombos(7,50);
+						//comboTextViews.get(7).setText((CharSequence) Integer.toString(players.get(playerTurn).getCombos().get(7)));
+					//}
 					// Update total score
-					comboTextViews.get(17).setText((CharSequence) Integer.toString(players.get(playerTurn).getTotalScore()));
-										
+					//comboTextViews.get(17).setText((CharSequence) Integer.toString(players.get(playerTurn).getTotalScore()));
+								
+										**/
+					
 					//Check if last player has finished last throw
-					if((playerTurn == players.size()) && roundCheck() == 15) 
+					if((playerTurn == players.size()-1) && roundCheck() == 15) 
 						winner();
 					
 					// Last Player has not finished his last throw
@@ -383,7 +386,7 @@ public class GameActivity extends Activity {
 								comboTextViews.get(i).setText(" ");
 							}
 						}
-						
+
 						// Set all combos unclickable
 						newTurn();
 					}
@@ -591,6 +594,6 @@ public class GameActivity extends Activity {
 	 * Calculate the winner
 	 */
 	private void winner(){
-		
+		sum.setText((CharSequence) "WIN");
 	}
 }
