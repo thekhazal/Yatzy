@@ -1,6 +1,6 @@
 package group5.yatzy;
 
-
+//ny
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -17,6 +17,10 @@ import android.widget.TextView;
  *
  */
 public class GameActivity extends Activity {
+
+	int[] highscores;
+	String winnerName = null;
+	int maxScore;
 
 	ArrayList<Dice> dice = new ArrayList<Dice>();
 	ArrayList<TextView> comboTextViews = new ArrayList<TextView>();
@@ -67,6 +71,8 @@ public class GameActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
+
+		highscores = savedInstanceState.getIntArray("Highscores"); 
 
 		gameText 	= (TextView) 	findViewById(R.id.headText);
 		playerName 	= (TextView) 	findViewById(R.id.playerNameText);
@@ -610,6 +616,68 @@ public class GameActivity extends Activity {
 	 * Calculate the winner
 	 */
 	private void winner(){
-		playerName.setText((CharSequence) "WIN!!!!!");
+		Dialog winner = new Dialog(this);
+		winner.setContentView(R.layout.winnerdialog);
+		winner.setTitle("Game finished");
+    	winner.setCancelable(false);
+    	TextView text = (TextView) winner.findViewById(R.id.winner);
+    	
+    	/*
+    	 * Display the name and score of the winner.
+    	 */
+    	maxScore=0;
+    	for(Player p: players)
+    	{
+    		int tmp;
+    		if((tmp = p.getTotalScore()) > maxScore)
+    		{
+    			maxScore = tmp;
+    			winnerName = p.getName();
+    		}
+    	}
+    	if(winnerName.equals(null))
+    		winnerName = players.get(0).getName();
+    	text.setText("The winner is: " + winnerName + ", with score: " + maxScore);
+    	
+    	/*
+    	 * Highscore
+    	 */
+    	boolean reachedHighscore = false;
+    	for(int i = 0; i<highscores.length;i++)
+    	{
+    		if(maxScore >= highscores[i]){
+    			reachedHighscore = true;
+    			break;
+    		}
+    	}
+    	
+    	TextView high = (TextView) winner.findViewById(R.id.high);
+    	if(reachedHighscore)
+    		high.setText("You reached the highscore list!");
+    	
+    	 Button playAgain = (Button) findViewById(R.id.again);
+         Button mainMenu = (Button) findViewById(R.id.main);
+         
+         playAgain.setOnClickListener(new OnClickListener(){
+ 	        public void onClick(View v) {
+ 	        	Intent resultIntent = getIntent();
+ 	        	resultIntent.putExtra("WinnerName", winnerName);
+ 	        	resultIntent.putExtra("Score", maxScore);
+ 	        	resultIntent.putExtra("playAgain",true);
+ 	        	setResult(RESULT_OK, resultIntent);
+ 	        	finish();
+ 	        }
+         });
+         
+         mainMenu.setOnClickListener(new OnClickListener(){
+  	        public void onClick(View v) {
+  	        	Intent resultIntent = getIntent();
+  	        	resultIntent.putExtra("WinnerName", winnerName);
+  	        	resultIntent.putExtra("Score", maxScore);
+  	        	resultIntent.putExtra("playAgain",false);
+  	        	setResult(RESULT_OK, resultIntent);
+  	        	finish();
+  	        }
+          });
 	}
 }

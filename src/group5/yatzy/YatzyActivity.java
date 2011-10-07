@@ -48,7 +48,8 @@ public class YatzyActivity extends Activity {
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,GameActivity.class);
 				gameIntent.putExtra("Resume", true);
-				startActivityForResult(gameIntent,0);
+				gameIntent.putExtra("Highscores",hs.getWinnerScores());
+				startActivityForResult(gameIntent,1);
 			}
 		}); 
 
@@ -59,7 +60,9 @@ public class YatzyActivity extends Activity {
 		newgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
-				startActivity(gameIntent);	
+				gameIntent.putExtra("Highscores",hs.getWinnerScores());
+				startActivityForResult(gameIntent,1);
+					
 			}
 		});
 
@@ -99,4 +102,36 @@ public class YatzyActivity extends Activity {
 				hs.clear();
 		}
 	}
+
+	/**
+	 * Called when returning from other activity. 
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+		/*
+		 * If pushing the clear - button in HighscoreActivity
+		 */
+		if(requestCode == 0){
+			if(resultCode == Activity.RESULT_OK)
+				hs.clear();
+		}
+		/*
+		 * When finishing a game, and pressing the play again - button or the back-to-main-
+		 * menu - button in the popup dialog in GameActivity.
+		 */
+		if(requestCode == 1){
+			if(resultCode == Activity.RESULT_OK){
+				hs.update(data.getStringExtra("WinnerName"), data.getIntExtra("WinnerScore",999)); //999=default value - chosen 500 just to find bugs easier
+				if(data.getBooleanExtra("playAgain", false)) //false = default value
+				{
+					Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
+					gameIntent.putExtra("Highscores",hs.getWinnerScores());
+					startActivityForResult(gameIntent,1);	
+				}
+			}
+		}
+	}
+
 }
