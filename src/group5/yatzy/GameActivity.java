@@ -26,7 +26,7 @@ public class GameActivity extends Activity {
 	ArrayList<Integer> tempCombos = new ArrayList<Integer>();
 	ArrayList<Integer> tempDice = new ArrayList<Integer>();
 
-	int roundNr = 0;
+	int roundNr = 1;
 	int playerTurn = 0;
 	int throwTurn = 0;
 	int diceBeingHeld = 0;
@@ -357,7 +357,7 @@ public class GameActivity extends Activity {
 					else{
 						
 						//Check if last player has made throw, then increase roundNr
-						if(playerTurn == players.size())
+						if(playerTurn == players.size()-1)
 							roundNr++;
 						
 						// Next players turn
@@ -480,9 +480,17 @@ public class GameActivity extends Activity {
 					tempCombos.set(i, 0);
 					comboTextViews.get(i).setText((CharSequence) "---");
 					comboTextViews.get(i).setClickable(true);
-				}
-				
+				}	
 			}
+			// Show Sum, Bonus and Total Score
+			comboTextViews.get(6).setText((CharSequence) players.get(playerTurn).getCombos().get(6).toString());
+			comboTextViews.get(17).setText((CharSequence) players.get(playerTurn).getCombos().get(17).toString());
+			
+			// Show bonus
+			if(players.get(playerTurn).hasBonus())
+				comboTextViews.get(7).setText((CharSequence) players.get(playerTurn).getCombos().get(7).toString());
+			else
+				comboTextViews.get(7).setText((CharSequence) " ");
 		}
 	}
 	
@@ -602,6 +610,6 @@ public class GameActivity extends Activity {
 	 * Calculate the winner
 	 */
 	private void winner(){
-		sum.setText((CharSequence) "WIN");
+		playerName.setText((CharSequence) "WIN!!!!!");
 	}
 }

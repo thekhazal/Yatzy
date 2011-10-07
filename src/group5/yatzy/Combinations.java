@@ -170,7 +170,7 @@ public class Combinations {
 	private static Integer calcPair(ArrayList<Integer> dice) {
 		dice = sort(dice);
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			if (dice.get(i) == dice.get(i+1))
 				return dice.get(i)*2;
 		}

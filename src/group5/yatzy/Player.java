@@ -28,6 +28,7 @@ public class Player {
 		for(int i = 0; i < 18; i++){
 			this.combos.add(null);
 		}
+		this.combos.set(6, 0);
 		this.combos.set(17, 0);
 	}
 	
