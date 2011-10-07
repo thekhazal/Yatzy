@@ -89,20 +89,6 @@ public class YatzyActivity extends Activity {
 			resgButton.setVisibility(TextView.INVISIBLE);
 	}
 
-
-	/**
-	 * Called when pushing the clear-button in HighscoreActivity.
-	 */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		super.onActivityResult(requestCode, resultCode, data);
-		if(requestCode == 0){
-			if(resultCode == Activity.RESULT_OK)
-				hs.clear();
-		}
-	}
-
 	/**
 	 * Called when returning from other activity. 
 	 */
