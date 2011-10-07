@@ -98,7 +98,7 @@ public class GameActivity extends Activity {
 	
 		
 		for(int i = 0; i < 5; i++){
-			tempDice.add(null);
+			tempDice.add(0);
 		}
 		/**
 		 * The combinations are being added to the comboTextViews' list.
@@ -465,7 +465,6 @@ public class GameActivity extends Activity {
 
 		for(int i = 0; i < 18; i++){
 			Integer temp = tempCombos.get(i);
-			
 			
 			if(temp != null) {
 				// There is a possible combination
