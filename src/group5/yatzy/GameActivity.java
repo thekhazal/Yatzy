@@ -446,11 +446,17 @@ public class GameActivity extends Activity {
 
 	}
 
+	/**
+	 * Update choices of combination for player when he has made a throw.
+	 * @param dice the dice that are thrown.
+	 */
 	private void updateTempCombos(ArrayList<Dice> dice) {
+		
 		for(int i = 0; i < dice.size(); i++){
 			tempDice.set(i, dice.get(i).getValue());
 		}
 		
+		//Calculate combos and put into tempCombos arraylist.
 		Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice);
 		for(int i = 0; i < 18; i++){
 			tempCombos.add(null);
@@ -458,9 +464,25 @@ public class GameActivity extends Activity {
 		}
 
 		for(int i = 0; i < 18; i++){
-			if(tempCombos.get(i) != null) {
-				comboTextViews.get(i).setText((CharSequence) Integer.toString(tempCombos.get(i)));
+			Integer temp = tempCombos.get(i);
+			
+			
+			if(temp != null) {
+				// There is a possible combination
+				comboTextViews.get(i).setText((CharSequence) tempCombos.get(i).toString());
 				comboTextViews.get(i).setClickable(true);
+			}
+			else {
+				// There is not a possible combination, show "---" so the player can cross it if it wants.
+				// Also set value of that combination to zero so if the player chooses this one, it gets zero points.
+				
+				// But first check so that the player did not already chose this combo.
+				if (players.get(playerTurn).getCombos().get(i) == null) {
+					tempCombos.set(i, 0);
+					comboTextViews.get(i).setText((CharSequence) "---");
+					comboTextViews.get(i).setClickable(true);
+				}
+				
 			}
 		}
 	}
@@ -569,7 +591,7 @@ public class GameActivity extends Activity {
 		currentChoice.setKey(null);
 		currentChoice.setValue(null);
 		for(int i = 0; i < comboTextViews.size(); i++) {
-			comboTextViews.get(0).setClickable(false);
+			comboTextViews.get(i).setClickable(false);
 		}
 		for(int i = 0; i < dice.size(); i++){
 			dice.get(i).setHeld(false);
