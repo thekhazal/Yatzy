@@ -348,19 +348,6 @@ public class GameActivity extends Activity {
 				if(currentChoice.getKey() != null) {
 					players.get(playerTurn).updateCombos(currentChoice.getKey(), currentChoice.getValue());
 					
-					/** ÄNDRA PLATS
-					// Update "middle" sum
-					//sum.setText((CharSequence) Integer.toString(100));
-					
-					// Update bonus
-					//if(players.get(playerTurn).hasBonus()) {
-						//players.get(playerTurn).updateCombos(7,50);
-						//comboTextViews.get(7).setText((CharSequence) Integer.toString(players.get(playerTurn).getCombos().get(7)));
-					//}
-					// Update total score
-					//comboTextViews.get(17).setText((CharSequence) Integer.toString(players.get(playerTurn).getTotalScore()));
-								
-										**/
 					
 					//Check if last player has finished last throw
 					if((playerTurn == players.size()-1) && roundCheck() == 15) 
@@ -371,7 +358,7 @@ public class GameActivity extends Activity {
 						
 						//Check if last player has made throw, then increase roundNr
 						if(playerTurn == players.size())
-							//roundNr++;
+							roundNr++;
 						
 						// Next players turn
 						nextPlayer();
@@ -383,13 +370,13 @@ public class GameActivity extends Activity {
 								comboTextViews.get(i).setText((CharSequence) Integer.toString(temp.get(i)));
 							}
 							else {
-								comboTextViews.get(i).setText(" ");
+								comboTextViews.get(i).setText("");
 							}
 						}
 
 						// Set all combos unclickable
-						newTurn();
-					}
+						newTurn(); 
+					} 
 				}
 			}
 		});

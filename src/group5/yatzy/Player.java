@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class Player {
 	
 	private String name;
-	private final int BONUSPOINTS = 63;
-	private final int BONUS = 50;
+	private static final int BONUSPOINTS = 63;
+	private static final int BONUS = 50;
 	
 	/**
 	 * This list will be used to store the players chosen combinations during
@@ -42,16 +42,18 @@ public class Player {
 	 * @param score The calculated score for the specific position. 
 	 * @return Returns the updated score list.
 	 */
-	public ArrayList<Integer> updateCombos(int position, int score) {
+	public void updateCombos(int position, int score) {
 		combos.set(position, score);
-		if (position < 6) {
-			combos.set(6, (combos.get(6)+score));
-			if (combos.get(6) >= BONUSPOINTS)
-				combos.set(7, BONUS);
-		}
-		combos.set(17, (combos.get(17)+score));
+				
+		// Update sum for 1-6's
+		combos.set(6, getSumScore());
 		
-		return combos;
+		// Check bonus
+		if(hasBonus())
+			combos.set(7,BONUS);
+		
+		// Update total score
+		combos.set(17, getTotalScore());
 	}
 	
 	/**
@@ -70,7 +72,8 @@ public class Player {
 		int middle = 0;
 		
 		for(int i = 0; i < 6; i++){
-			middle = middle + combos.get(i);
+			if(combos.get(i) != null)
+				middle = middle + combos.get(i);
 		}
 		return middle;
 	}
@@ -81,7 +84,7 @@ public class Player {
 	public boolean hasBonus()
 	{
 		int sum = getSumScore();
-		if(sum < BONUS)
+		if(sum < BONUSPOINTS)
 			return false;
 		return true;
 	}
@@ -92,9 +95,9 @@ public class Player {
 	public int getTotalScore() {
 		int total = 0;
 		
-		for(int i = 0; i < combos.size(); i++)
-			if (i != 6 || i != 17)
-				total = total + i;
+		for(int i = 0; i < combos.size()-1; i++)
+			if (i != 6 && i != 17 && combos.get(i) != null)
+					total += combos.get(i);
 		return total;
 	}
 }

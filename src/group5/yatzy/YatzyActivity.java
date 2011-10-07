@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class YatzyActivity extends Activity {
-	
+
 	private Button resgButton;
 	private Button newgButton;
 	private Button highButton;
@@ -20,7 +20,7 @@ public class YatzyActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-	
+
 		/**
 		 * Highscore list.
 		 */
@@ -29,30 +29,29 @@ public class YatzyActivity extends Activity {
 		/**
 		 * Resume game, New game high score buttons
 		 */
-
 		resgButton = (Button) findViewById(R.id.resumegame);
 		newgButton = (Button) findViewById(R.id.newgame);
 		highButton = (Button) findViewById(R.id.highscore);
 
-		
+
 		/**
 		 * Hide the resume game button if no game is saved.
 		 */
-		if (RWState.fileExists())
+		if (!RWState.fileExists())
 			resgButton.setVisibility(TextView.INVISIBLE);
-		
+
 		/**
 		 * Actionlistener for resume game button, terminates application so far
 		 * on event of clicked button
 		 */
 		resgButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
-        		Intent gameIntent = new Intent(YatzyActivity.this,GameActivity.class);
-        		gameIntent.putExtra("Resume", true);
-        		startActivityForResult(gameIntent,0);
+				Intent gameIntent = new Intent(YatzyActivity.this,GameActivity.class);
+				gameIntent.putExtra("Resume", true);
+				startActivityForResult(gameIntent,0);
 			}
 		}); 
-		
+
 		/**
 		 * Actionlistener for new game button, starts new game activity
 		 * on event of clicked button
@@ -63,40 +62,41 @@ public class YatzyActivity extends Activity {
 				startActivity(gameIntent);	
 			}
 		});
-		
+
 		/**
 		 * Actionlistener for highscore button, starts highscore activity
 		 * on event of clicked button, and passes possible saved highscore to it.
 		 */
-        highButton.setOnClickListener(new OnClickListener(){
-        	public void onClick(View v) {
-        		Intent gameIntent = new Intent(YatzyActivity.this,HighScoreActivity.class);
-        		gameIntent.putExtra("names", hs.getWinnerNames());
-        		gameIntent.putExtra("scores", hs.getWinnerScores());
-        		startActivityForResult(gameIntent,0);
-        	}
-        }); 
+		highButton.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				Intent gameIntent = new Intent(YatzyActivity.this,HighScoreActivity.class);
+				gameIntent.putExtra("names", hs.getWinnerNames());
+				gameIntent.putExtra("scores", hs.getWinnerScores());
+				startActivityForResult(gameIntent,0);
+			}
+		}); 
 	}
-	
+
 	/**
 	 * Method to hide the resume game button if no such game is available.
 	 */
 	public void onResume() {
+		super.onResume();
 		if (!RWState.fileExists())
 			resgButton.setVisibility(TextView.INVISIBLE);
 	}
-	
+
+
 	/**
 	 * Called when pushing the clear-button in HighscoreActivity.
 	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-    	super.onActivityResult(requestCode, resultCode, data);
-    	if(requestCode == 0){
-    		if(resultCode == Activity.RESULT_OK)
-    			hs.clear();
-    	}
-    }
-	
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 0){
+			if(resultCode == Activity.RESULT_OK)
+				hs.clear();
+		}
+	}
 }
