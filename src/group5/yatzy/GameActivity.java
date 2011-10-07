@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 /**
  * This class controls the game flow and updates the game.xml. 
- * @author Anmar Khazal, Johan Grund�n, Daniel Gunnarsson, Viktor Swantesson
+ * @author Anmar Khazal, Johan Grund�n, Daniel Gunnarsson, Viktor Swantesson, Emma Bogren
  *
  */
 public class GameActivity extends Activity {
@@ -63,6 +63,8 @@ public class GameActivity extends Activity {
 	ImageView dice4;
 	ImageView dice5;
 	Button throwButton;
+	Button playAgain;
+	Button mainMenu;
 
 	// Save current choice with two integers (position in player combo list, value at position)
 	Entry<Integer,Integer> currentChoice = new Entry<Integer,Integer>(null, null);
@@ -73,7 +75,9 @@ public class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 
-		highscores = savedInstanceState.getIntArray("Highscores"); 
+		 Bundle extras = getIntent().getExtras();
+	     highscores = (int[]) extras.get("Highscores");
+
 
 		gameText 	= (TextView) 	findViewById(R.id.headText);
 		playerName 	= (TextView) 	findViewById(R.id.playerNameText);
@@ -102,6 +106,8 @@ public class GameActivity extends Activity {
 		dice4		= (ImageView)	findViewById(R.id.dice4);
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
+		playAgain 	= (Button) 		findViewById(R.id.again);
+		mainMenu	= (Button) 		findViewById(R.id.mainMenu);
 	
 		
 		for(int i = 0; i < 5; i++){
@@ -186,6 +192,7 @@ public class GameActivity extends Activity {
 			if(dice.get(i).getValue() == 6)
 				diceImages.get(i).setImageResource(R.drawable.six);
 		}
+		
 
 		/**
 		 * Listener for selection of ones combination
@@ -394,6 +401,7 @@ public class GameActivity extends Activity {
 		 */
 		throwButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
+			
 				for(int i = 0; i < dice.size(); i++){
 
 					if(!dice.get(i).isHeld()){
@@ -450,7 +458,7 @@ public class GameActivity extends Activity {
 				}
 			}
 		});
-
+		
 	}
 
 	/**
@@ -622,6 +630,7 @@ public class GameActivity extends Activity {
 		winner.setTitle("Game finished");
     	winner.setCancelable(false);
     	TextView text = (TextView) winner.findViewById(R.id.winner);
+
     	
     	/*
     	 * Display the name and score of the winner.
@@ -636,7 +645,7 @@ public class GameActivity extends Activity {
     			winnerName = p.getName();
     		}
     	}
-    	if(winnerName.equals(null))
+    	if(winnerName == null)
     		winnerName = players.get(0).getName();
     	text.setText("The winner is: " + winnerName + ", with score: " + maxScore);
     	
@@ -655,11 +664,9 @@ public class GameActivity extends Activity {
     	TextView high = (TextView) winner.findViewById(R.id.high);
     	if(reachedHighscore)
     		high.setText("You reached the highscore list!");
+    	winner.show();
     	
-    	 Button playAgain = (Button) findViewById(R.id.again);
-         Button mainMenu = (Button) findViewById(R.id.main);
-         
-         playAgain.setOnClickListener(new OnClickListener(){
+    	/*playAgain.setOnClickListener(new OnClickListener(){
  	        public void onClick(View v) {
  	        	Intent resultIntent = getIntent();
  	        	resultIntent.putExtra("WinnerName", winnerName);
@@ -669,7 +676,8 @@ public class GameActivity extends Activity {
  	        	finish();
  	        }
          });
-         
+        
+        
          mainMenu.setOnClickListener(new OnClickListener(){
   	        public void onClick(View v) {
   	        	Intent resultIntent = getIntent();
@@ -679,6 +687,7 @@ public class GameActivity extends Activity {
   	        	setResult(RESULT_OK, resultIntent);
   	        	finish();
   	        }
-          });
+          });*/
+         
 	}
 }

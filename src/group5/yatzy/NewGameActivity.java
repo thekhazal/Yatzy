@@ -34,6 +34,8 @@ public class NewGameActivity extends Activity {
 	private int intendedPlayers;
 	private ArrayList<String> players;
 	private String playerOne, playerTwo, playerThree, playerFour;
+	
+	private int[] highscores;
 
 	public static final int MAX_LENGTH = 4;
 	
@@ -42,6 +44,9 @@ public class NewGameActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newgame);
+        
+        Bundle extras = getIntent().getExtras();
+        highscores = (int[]) extras.get("Highscores");
         
         /**
          * Drop down menu with number of players
@@ -126,6 +131,7 @@ public class NewGameActivity extends Activity {
 				if(startGame){	
 					Intent gameIntent = new Intent(NewGameActivity.this,GameActivity.class);
 					gameIntent.putExtra("NewGameActivity", players);
+					gameIntent.putExtra("Highscores", highscores);
 					startActivity(gameIntent);
 				}
 			}
