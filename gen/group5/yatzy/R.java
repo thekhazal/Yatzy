@@ -31,6 +31,7 @@ public final class R {
         public static final int twoheld=0x7f02000e;
     }
     public static final class id {
+        public static final int again=0x7f06005a;
         public static final int bigStraight=0x7f06002e;
         public static final int bigStraightText=0x7f06002d;
         public static final int bonus=0x7f06001c;
@@ -53,8 +54,10 @@ public final class R {
         public static final int fullHouse=0x7f060031;
         public static final int fullHouseText=0x7f060030;
         public static final int headText=0x7f060001;
+        public static final int high=0x7f060059;
         public static final int highscore=0x7f06004e;
         public static final int linearLayout1=0x7f06003b;
+        public static final int mainMenu=0x7f06005b;
         public static final int name1=0x7f060048;
         public static final int name2=0x7f060049;
         public static final int name3=0x7f06004a;
@@ -116,6 +119,7 @@ public final class R {
         public static final int twoPairsText=0x7f060021;
         public static final int twos=0x7f06000b;
         public static final int twosText=0x7f06000a;
+        public static final int winner=0x7f060058;
         public static final int yatzy=0x7f060037;
         public static final int yatzyText=0x7f060036;
         public static final int yes=0x7f060046;
@@ -126,6 +130,7 @@ public final class R {
         public static final int highscore=0x7f030002;
         public static final int main=0x7f030003;
         public static final int newgame=0x7f030004;
+        public static final int winnerdialog=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
