@@ -359,7 +359,7 @@ public class GameActivity extends Activity {
 			public void onClick(View v) {
 				if(currentChoice.getKey() != null) {
 					players.get(playerTurn).updateCombos(currentChoice.getKey(), currentChoice.getValue());
-					
+					updateComboBg();
 					
 					//Check if last player has finished last throw
 					if((playerTurn == players.size()-1) && roundCheck() == 15) 
@@ -690,5 +690,59 @@ public class GameActivity extends Activity {
           });
          
 	}
-	
+	private void updateComboBg() {
+		// 
+			if(currentChoice.getKey().equals(0))
+				ones.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+
+			if(currentChoice.getKey().equals(1))
+				twos.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+
+			if(currentChoice.getKey().equals(2))
+				threes.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+
+			if(currentChoice.getKey().equals(3))
+				fours.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+
+			if(currentChoice.getKey().equals(4))
+				fives.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(5))
+				sixes.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(8))
+				onePair.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(9))
+				twoPairs.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(10))
+				trips.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(11))
+				quads.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(12))
+				smallStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(13))
+				bigStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(14))
+				fullHouse.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(15))
+				chance.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+			if(currentChoice.getKey().equals(16))
+				yatzy.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+	}
+	public void resetComboBg(){
+		ones.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		twos.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		threes.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		fours.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		fives.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		sixes.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		onePair.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		twoPairs.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		trips.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		quads.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		smallStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		bigStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		fullHouse.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		chance.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		yatzy.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
+		
+	}
 }
