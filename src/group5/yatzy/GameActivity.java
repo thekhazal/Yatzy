@@ -69,13 +69,6 @@ public class GameActivity extends Activity {
 	// Save current choice with two integers (position in player combo list, value at position)
 	Entry<Integer,Integer> currentChoice = new Entry<Integer,Integer>(null, null);
 	
-	@Override
-	public void onBackPressed() {
-		Intent gameIntent = new Intent(GameActivity.this,YatzyActivity.class);
-		startActivity(gameIntent);	
-	return;
-	}
-	
 	/** Called when the activity is first created.*/
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -113,9 +106,7 @@ public class GameActivity extends Activity {
 		dice4		= (ImageView)	findViewById(R.id.dice4);
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
-		playAgain 	= (Button) 		findViewById(R.id.again);
-		mainMenu	= (Button) 		findViewById(R.id.mainMenu);
-	
+
 		
 		for(int i = 0; i < 5; i++){
 			tempDice.add(0);
@@ -408,7 +399,6 @@ public class GameActivity extends Activity {
 		 */
 		throwButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v) {
-			
 				for(int i = 0; i < dice.size(); i++){
 
 					if(!dice.get(i).isHeld()){
@@ -673,7 +663,10 @@ public class GameActivity extends Activity {
     		high.setText("You reached the highscore list!");
     	winner.show();
     	
-    	/*playAgain.setOnClickListener(new OnClickListener(){
+    	playAgain 	= (Button) winner.findViewById(R.id.again);
+		mainMenu	= (Button) winner.findViewById(R.id.mainMenu);
+    	
+    	playAgain.setOnClickListener(new OnClickListener(){
  	        public void onClick(View v) {
  	        	Intent resultIntent = getIntent();
  	        	resultIntent.putExtra("WinnerName", winnerName);
@@ -694,7 +687,8 @@ public class GameActivity extends Activity {
   	        	setResult(RESULT_OK, resultIntent);
   	        	finish();
   	        }
-          });*/
+          });
          
 	}
+	
 }

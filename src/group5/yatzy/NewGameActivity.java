@@ -133,6 +133,7 @@ public class NewGameActivity extends Activity {
 					gameIntent.putExtra("NewGameActivity", players);
 					gameIntent.putExtra("Highscores", highscores);
 					startActivity(gameIntent);
+					finish();
 				}
 			}
 		}); 
