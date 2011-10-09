@@ -24,7 +24,9 @@ public class Combinations {
 			combos.add(null);
 		}
 		
-				/**
+		dice = sort(dice);
+		
+		/**
 		 * Fields for One to Six are calculated and inserted in the list.
 		 */
 		for (int i = 0; i < 6; i++) {
@@ -48,8 +50,6 @@ public class Combinations {
 		else 
 			combos.set(8, null);
 
-
-
 		/**
 		 * The TwoPair field gets calculated.
 		 */
@@ -57,8 +57,6 @@ public class Combinations {
 			combos.set(9, calcTwoPair(dice));
 		else 
 			combos.set(9, null);
-
-
 
 		/**
 		 * The Trips field gets calculated.
@@ -77,12 +75,11 @@ public class Combinations {
 		else 
 			combos.set(11, null);
 
-
 		/**
 		 * The SmallStraight field gets calculated.
 		 */
 		if (playerList.get(12) == null) {
-			temp = calcStraight(dice);
+			temp = calcSmallStr(dice);
 			if (temp != null)
 				combos.set(12, temp);
 			else 
@@ -91,12 +88,11 @@ public class Combinations {
 		else 
 			combos.set(12, 0);
 
-
 		/**
 		 * The BigStraight field gets calculated.
 		 */
 		if (playerList.get(13) == null) {
-			temp = calcStraight(dice);
+			temp = calcBigStr(dice);
 			if (temp != null)
 				combos.set(13, temp);
 			else 
@@ -118,7 +114,7 @@ public class Combinations {
 		 */
 		if (playerList.get(15) == null) 
 			combos.set(15, calcChance(dice));
-		else 
+		else
 			combos.set(15, null);
 
 		/**
@@ -133,11 +129,7 @@ public class Combinations {
 		 * The "TotalSum" field are not to be calculated here.
 		 */
 		combos.set(17, 0);
-		
-		//return combos;
 	}
-
-
 
 	/**
 	 * This method calculates the number of occurrences of a specified dice 
@@ -168,8 +160,6 @@ public class Combinations {
 	 * otherwise returns null.
 	 */
 	private static Integer calcPair(ArrayList<Integer> dice) {
-		dice = sort(dice);
-
 		for (int i = 0; i < 4; i++) {
 			if (dice.get(i) == dice.get(i+1))
 				return dice.get(i)*2;
@@ -184,11 +174,8 @@ public class Combinations {
 	 * otherwise returns null.
 	 */
 	private static Integer calcTwoPair(ArrayList<Integer> dice){
-		int pair1 = 0;
-		int pair2 = 0;
-
-		dice = sort(dice);
-
+		Integer pair1 = 0;
+		Integer pair2 = 0;
 		for(int i = 0; i < 2; i++){
 			if(dice.get(i) == dice.get(i+1)) {
 				pair1 = dice.get(i) * 2;
@@ -213,8 +200,6 @@ public class Combinations {
 	 * otherwise returns null.
 	 */
 	private static Integer calcTrips(ArrayList<Integer> dice) {
-		dice = sort(dice);
-
 		for(int i = 0; i < 3; i++){
 			if(dice.get(i) == dice.get(i+1)){
 				if(dice.get(i) == dice.get(i+2))
@@ -231,8 +216,6 @@ public class Combinations {
 	 * otherwise returns null.
 	 */
 	private static Integer calcQuads(ArrayList<Integer> dice) {
-		dice = sort(dice);
-
 		for(int i = 0; i < 2; i++){
 			if(dice.get(i) == dice.get(i+1))
 				if(dice.get(i) == dice.get(i+2))
@@ -241,20 +224,35 @@ public class Combinations {
 		}
 		return null;
 	}
-
-
-	private static Integer calcStraight(ArrayList<Integer> dice){
-		dice = sort(dice);
-
+	
+	/**
+	 * This method calculates if there is a small straight of the dice.
+	 * @param dice list of dice
+	 * @return the value of the small straight if any.
+	 */
+	private static Integer calcSmallStr(ArrayList<Integer> dice){
+		if(dice.get(0) != 5)
+			return null;
 		for(int i = 0; i < 4; i++){
 			if(dice.get(i) != dice.get(i+1) + 1)
 				return null;
 		}
-
-		if(dice.get(0) == 6)
-			return 20;
-
 		return 15;
+	}
+	
+	/**
+	 * This method calculates if there is a big straight of the dice.
+	 * @param dice list of dice
+	 * @return the value of the big straight if any.
+	 */
+	private static Integer calcBigStr(ArrayList<Integer> dice){
+		if(dice.get(0) != 6)
+			return null;
+		for(int i = 0; i < 4; i++){
+			if(dice.get(i) != dice.get(i+1) + 1)
+				return null;
+		}
+		return 20;
 	}
 
 	/**
@@ -269,9 +267,7 @@ public class Combinations {
 		Integer temp2 = 0;
 
 		temp1 = calcTrips(dice);
-		if(temp1 == null)
-			return null;
-		else{
+		if(temp1 != null){
 			for(int i = 0; i < 4; i++){
 				if(dice.get(i) == dice.get(i+1) && dice.get(i) != (temp1 / 3)){
 					temp2 = dice.get(i) * 2;
@@ -290,7 +286,7 @@ public class Combinations {
 	 * @return the value of all the dice added.
 	 */
 	private static Integer calcChance(ArrayList<Integer> dice) {
-		int chance = 0;
+		Integer chance = 0;
 		for (int i = 0; i < 5; i++) {
 			chance += dice.get(i);
 		}
@@ -303,13 +299,10 @@ public class Combinations {
 	 * @return If a Yatzy exists returns the value 50 otherwise returns null.
 	 */
 	private static Integer calcYatzy(ArrayList<Integer> dice) {
-
 		if(dice.get(0) == dice.get(4))
 			return 50;
-
 		return null;
 	}
-
 
 	/**
 	 * This sorts a set of dice with the highest value first.
@@ -317,10 +310,10 @@ public class Combinations {
 	 * @return A sorted array with the highest value first.
 	 */
 	private static ArrayList<Integer> sort(ArrayList<Integer> dice) {
-		for(int i = 0; i < dice.size()-1; i++) {
-			for(int j = 0; j < dice.size()-1; j++) {
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
 				if(dice.get(j) < dice.get(j+1)) {
-					int temp = dice.get(j);
+					Integer temp = dice.get(j);
 					dice.set(j, dice.get(j+1));
 					dice.set(j+1, temp);
 				}
