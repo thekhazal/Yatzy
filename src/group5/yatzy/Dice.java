@@ -14,7 +14,7 @@ public class Dice {
 	
 	/**
 	 * Dice must not be held when initialized
-	*/
+	 */
 	public Dice(){
 		this.r = new Random();
 		this.held = false;
@@ -42,8 +42,5 @@ public class Dice {
 
 	public void setHeld(boolean held) {
 		this.held = held;
-	}
-	
-	
-	
+	}	
 }
