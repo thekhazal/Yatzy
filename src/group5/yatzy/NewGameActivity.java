@@ -78,11 +78,11 @@ public class NewGameActivity extends Activity {
         // Set intended players to zero, user has not made choice yet.
         intendedPlayers = 0;
         players = new ArrayList<String>();
+
         /**
          * Button for start game
          */ 
         startButton = (Button) findViewById(R.id.startButton);
-
         
 		/**
 		 * Actionlistener for start game button
@@ -207,7 +207,6 @@ public class NewGameActivity extends Activity {
 	{
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		
 		if(requestCode == 0){
 			if(resultCode == Activity.RESULT_OK)
 			{
@@ -223,5 +222,4 @@ public class NewGameActivity extends Activity {
 			}
 		}
 	}
-
 }
