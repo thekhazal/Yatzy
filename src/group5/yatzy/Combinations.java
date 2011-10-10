@@ -11,8 +11,6 @@ public class Combinations {
 	public static ArrayList<Integer> combos = new ArrayList<Integer>();
 	private static Integer temp = 0;
 
-	
-	
 	/**
 	 * This method calculates what options of combinations are available to the user
 	 * @param playerList: the players current combination list.
@@ -24,6 +22,7 @@ public class Combinations {
 			combos.add(null);
 		}
 		
+		//The dice list is sorted for proccesing.
 		dice = sort(dice);
 		
 		/**
@@ -65,7 +64,6 @@ public class Combinations {
 			combos.set(10, calcTrips(dice));
 		else 
 			combos.set(10, null);
-
 
 		/**
 		 * The Quads field gets calculated.
