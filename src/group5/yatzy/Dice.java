@@ -25,7 +25,7 @@ public class Dice {
 	 * Rolls die with random nr between 1-6
 	*/
 	public void roll() {		
-		setValue(r.nextInt(6+1));
+		setValue(r.nextInt(6)+1);
 	}
 	
 	public int getValue() {

@@ -350,6 +350,51 @@ public class GameActivity extends Activity {
 			}
 		});
 		
+		/**
+		 * Listeners for all the dice. Marks if a dice will be held/not held
+		 * when clicked.
+		 */
+		dice1.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(throwTurn == 1 || throwTurn == 2){
+					updateHeldStatus(dice.get(0));
+					updateDice(dice.get(0), 0);
+				}
+			}
+		});
+		dice2.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(throwTurn == 1 || throwTurn == 2){
+					updateHeldStatus(dice.get(1));
+					updateDice(dice.get(1), 1);
+				}
+			}
+		});
+		dice3.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(throwTurn == 1 || throwTurn == 2){
+					updateHeldStatus(dice.get(2));
+					updateDice(dice.get(2), 2);
+				}
+			}
+		});
+		dice4.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(throwTurn == 1 || throwTurn == 2){
+					updateHeldStatus(dice.get(3));
+					updateDice(dice.get(3), 3);
+				}
+			}
+		});
+		dice5.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+				if(throwTurn == 1 || throwTurn == 2){
+					updateHeldStatus(dice.get(4));
+					updateDice(dice.get(4), 4);
+				}
+			}
+		});
+		
 		// Set all combos unclickable
 		newTurn();
 		
@@ -412,50 +457,7 @@ public class GameActivity extends Activity {
 			}
 		});
 
-		/**
-		 * Listeners for all the dice. Marks if a dice will be held/not held
-		 * when clicked.
-		 */
-		dice1.setOnClickListener(new OnClickListener(){
-			public void onClick(View v) {
-				if(throwTurn == 1 || throwTurn == 2){
-					updateHeldStatus(dice.get(0));
-					updateDice(dice.get(0), 0);
-				}
-			}
-		});
-		dice2.setOnClickListener(new OnClickListener(){
-			public void onClick(View v) {
-				if(throwTurn == 1 || throwTurn == 2){
-					updateHeldStatus(dice.get(1));
-					updateDice(dice.get(1), 1);
-				}
-			}
-		});
-		dice3.setOnClickListener(new OnClickListener(){
-			public void onClick(View v) {
-				if(throwTurn == 1 || throwTurn == 2){
-					updateHeldStatus(dice.get(2));
-					updateDice(dice.get(2), 2);
-				}
-			}
-		});
-		dice4.setOnClickListener(new OnClickListener(){
-			public void onClick(View v) {
-				if(throwTurn == 1 || throwTurn == 2){
-					updateHeldStatus(dice.get(3));
-					updateDice(dice.get(3), 3);
-				}
-			}
-		});
-		dice5.setOnClickListener(new OnClickListener(){
-			public void onClick(View v) {
-				if(throwTurn == 1 || throwTurn == 2){
-					updateHeldStatus(dice.get(4));
-					updateDice(dice.get(4), 4);
-				}
-			}
-		});
+		
 
 	}
 

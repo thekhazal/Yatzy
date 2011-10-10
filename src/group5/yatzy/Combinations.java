@@ -310,7 +310,7 @@ public class Combinations {
 	 * @return A sorted array with the highest value first.
 	 */
 	private static ArrayList<Integer> sort(ArrayList<Integer> dice) {
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < 5; i++) {
 			for(int j = 0; j < 4; j++) {
 				if(dice.get(j) < dice.get(j+1)) {
 					Integer temp = dice.get(j);
