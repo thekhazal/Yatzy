@@ -68,15 +68,15 @@ public class GameActivity extends Activity {
 
 	// Save current choice with two integers (position in player combo list, value at position)
 	Entry<Integer,Integer> currentChoice = new Entry<Integer,Integer>(null, null);
-	
+
 	/** Called when the activity is first created.*/
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game);
 
-		 Bundle extras = getIntent().getExtras();
-	     highscores = (int[]) extras.get("Highscores");
+		Bundle extras = getIntent().getExtras();
+		highscores = (int[]) extras.get("Highscores");
 
 
 		gameText 	= (TextView) 	findViewById(R.id.headText);
@@ -107,7 +107,7 @@ public class GameActivity extends Activity {
 		dice5		= (ImageView)	findViewById(R.id.dice5);
 		throwButton = (Button)		findViewById(R.id.throwButton);
 
-		
+
 		for(int i = 0; i < 5; i++){
 			tempDice.add(null);
 		}
@@ -117,8 +117,8 @@ public class GameActivity extends Activity {
 		for(int i = 0; i < 18; i++){
 			comboTextViews.add(null);
 		}
-		
-		
+
+
 		comboTextViews.set(0,ones);
 		comboTextViews.set(1,twos);
 		comboTextViews.set(2,threes);
@@ -137,17 +137,17 @@ public class GameActivity extends Activity {
 		comboTextViews.set(15,chance);
 		comboTextViews.set(16,yatzy);
 		comboTextViews.set(17,total);
-		
+
 		// Set all combos unclickable
 		newTurn();
-		
+
 		/**
 		 * Creates the five dice.
 		 */
 		for(int i = 0; i < 5; i++){
 			dice.add(new Dice());
 		}
-		
+
 		/**
 		 * The dice views are being added to the diceImages list.
 		 */
@@ -171,7 +171,7 @@ public class GameActivity extends Activity {
 
 		// Set name for first player
 		playerName.setText((CharSequence) players.get(playerTurn).getName());
-		
+
 		/**
 		 * Only happens once when the game is started for the first time to
 		 * give all the five dice random numbers when started.
@@ -190,7 +190,7 @@ public class GameActivity extends Activity {
 			if(dice.get(i).getValue() == 6)
 				diceImages.get(i).setImageResource(R.drawable.six);
 		}
-		
+
 
 		/**
 		 * Listener for selection of ones combination
@@ -201,7 +201,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(0));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of twos combination
 		 */
@@ -211,7 +211,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(1));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of threes combination
 		 */
@@ -221,7 +221,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(2));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of fours combination
 		 */
@@ -231,7 +231,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(3));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of fives combination
 		 */
@@ -241,7 +241,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(4));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of sixes combination
 		 */
@@ -251,7 +251,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(5));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of sixes combination
 		 */
@@ -261,7 +261,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(5));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of one pair combination
 		 */
@@ -271,7 +271,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(8));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of two pair combination
 		 */
@@ -281,7 +281,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(9));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of trips combination
 		 */
@@ -291,7 +291,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(10));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of quads combination
 		 */
@@ -301,7 +301,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(11));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of small straight combination
 		 */
@@ -311,7 +311,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(12));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of big straight combination
 		 */
@@ -321,7 +321,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(13));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of full house combination
 		 */
@@ -331,7 +331,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(14));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of chance combination
 		 */
@@ -341,7 +341,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(15));
 			}
 		});
-		
+
 		/**
 		 * Listener for selection of yatzy combination
 		 */
@@ -351,7 +351,7 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(16));
 			}
 		});
-		
+
 		/**
 		 * Listener for Done button
 		 */
@@ -360,21 +360,21 @@ public class GameActivity extends Activity {
 				if(currentChoice.getKey() != null) {
 					players.get(playerTurn).updateCombos(currentChoice.getKey(), currentChoice.getValue());
 					updateComboBg();
-					
+
 					//Check if last player has finished last throw
 					if((playerTurn == players.size()-1) && roundCheck() == 15) 
 						winner();
-					
+
 					// Last Player has not finished his last throw
 					else{
-						
+
 						//Check if last player has made throw, then increase roundNr
 						if(playerTurn == players.size()-1)
 							roundNr++;
-						
+
 						// Next players turn
 						nextPlayer();
-						
+
 						// Update the table with next players scores.
 						ArrayList<Integer> temp = players.get(playerTurn).getCombos();
 						for(int i = 0; i < temp.size(); i++) {
@@ -392,7 +392,7 @@ public class GameActivity extends Activity {
 				}
 			}
 		});
-		
+
 		/**
 		 * Listener for the throw button. Checks if a dice is being held or not
 		 * before throwing a dice. If held nothing happens. After each 
@@ -455,7 +455,7 @@ public class GameActivity extends Activity {
 				}
 			}
 		});
-		
+
 	}
 
 	/**
@@ -463,11 +463,11 @@ public class GameActivity extends Activity {
 	 * @param dice the dice that are thrown.
 	 */
 	private void updateTempCombos(ArrayList<Dice> dice) {
-		
+
 		for(int i = 0; i < dice.size(); i++){
 			tempDice.set(i, dice.get(i).getValue());
 		}
-		
+
 		//Calculate combos and put into tempCombos arraylist.
 		Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice);
 		for(int i = 0; i < 18; i++){
@@ -477,7 +477,7 @@ public class GameActivity extends Activity {
 
 		for(int i = 0; i < 18; i++){
 			Integer temp = tempCombos.get(i);
-			
+
 			if(temp != null) {
 				// There is a possible combination
 				comboTextViews.get(i).setText((CharSequence) tempCombos.get(i).toString());
@@ -486,7 +486,7 @@ public class GameActivity extends Activity {
 			else {
 				// There is not a possible combination, show "---" so the player can cross it if it wants.
 				// Also set value of that combination to zero so if the player chooses this one, it gets zero points.
-				
+
 				// But first check so that the player did not already chose this combo.
 				if (players.get(playerTurn).getCombos().get(i) == null) {
 					tempCombos.set(i, 0);
@@ -497,7 +497,7 @@ public class GameActivity extends Activity {
 			// Show Sum, Bonus and Total Score
 			comboTextViews.get(6).setText((CharSequence) players.get(playerTurn).getCombos().get(6).toString());
 			comboTextViews.get(17).setText((CharSequence) players.get(playerTurn).getCombos().get(17).toString());
-			
+
 			// Show bonus
 			if(players.get(playerTurn).hasBonus())
 				comboTextViews.get(7).setText((CharSequence) players.get(playerTurn).getCombos().get(7).toString());
@@ -505,7 +505,7 @@ public class GameActivity extends Activity {
 				comboTextViews.get(7).setText((CharSequence) " ");
 		}
 	}
-	
+
 	/**
 	 * This method updates a dice current holding status with the inverse
 	 * boolean value.
@@ -600,7 +600,7 @@ public class GameActivity extends Activity {
 		if(throwTurn == 3)
 			throwButton.setClickable(false);	
 	}
-	
+
 	/**
 	 * For each new turn, set all combinations unclickable
 	 */
@@ -618,200 +618,130 @@ public class GameActivity extends Activity {
 			updateDice(dice.get(i), i);
 		}
 	}
+
 	
 	/**
 	 * Calculate the winner
 	 */
 	private void winner(){
+
 		Dialog winner = new Dialog(this);
 		winner.setContentView(R.layout.winnerdialog);
 		winner.setTitle("Game finished");
-    	winner.setCancelable(false);
-    	TextView text = (TextView) winner.findViewById(R.id.winner);
+		winner.setCancelable(false);
+		TextView text = (TextView) winner.findViewById(R.id.winner);
 
-    	
-    	/*
-    	 * Display the name and score of the winner.
-    	 */
-    	maxScore=0;
-    	for(Player p: players)
-    	{
-    		int tmp;
-    		if((tmp = p.getTotalScore()) > maxScore)
-    		{
-    			maxScore = tmp;
-    			winnerName = p.getName();
-    		}
-    	}
-    	if(winnerName == null)
-    		winnerName = players.get(0).getName();
-    	text.setText("The winner is: " + winnerName + ", with score: " + maxScore);
-    	
-    	/*
-    	 * Highscore
-    	 */
-    	boolean reachedHighscore = false;
-    	for(int i = 0; i<highscores.length;i++)
-    	{
-    		if(maxScore >= highscores[i]){
-    			reachedHighscore = true;
-    			break;
-    		}
-    	}
-    	
-    	TextView high = (TextView) winner.findViewById(R.id.high);
-    	if(reachedHighscore)
-    		high.setText("You reached the highscore list!");
-    	winner.show();
-    	
-    	playAgain 	= (Button) winner.findViewById(R.id.again);
-		mainMenu	= (Button) winner.findViewById(R.id.mainMenu);
-    	
-    	playAgain.setOnClickListener(new OnClickListener(){
- 	        public void onClick(View v) {
- 	        	Intent resultIntent = getIntent();
- 	        	resultIntent.putExtra("WinnerName", winnerName);
- 	        	resultIntent.putExtra("Score", maxScore);
- 	        	resultIntent.putExtra("playAgain",true);
- 	        	setResult(RESULT_OK, resultIntent);
- 	        	finish();
- 	        }
-         });
-        
-        
-         mainMenu.setOnClickListener(new OnClickListener(){
-  	        public void onClick(View v) {
-  	        	Intent resultIntent = getIntent();
-  	        	resultIntent.putExtra("WinnerName", winnerName);
-  	        	resultIntent.putExtra("Score", maxScore);
-  	        	resultIntent.putExtra("playAgain",false);
-  	        	setResult(RESULT_OK, resultIntent);
-  	        	finish();
-  	        }
-          });
-         
-	/**
-	 * Calculate the winner
-	 */
-	private void winner(){
-		
-		Dialog winner = new Dialog(this);
-		winner.setContentView(R.layout.winnerdialog);
-		winner.setTitle("Game finished");
-    	winner.setCancelable(false);
-    	TextView text = (TextView) winner.findViewById(R.id.winner);
 
-    	
-    	/*
-    	 * Display the name and score of the winner.
-    	 */
-    	maxScore=0;
-    	for(Player p: players)
-    	{
-    		int tmp;
-    		if((tmp = p.getTotalScore()) > maxScore)
-    		{
-    			maxScore = tmp;
-    			winnerName = p.getName();
-    		}
-    	}
-    	if(winnerName == null)
-    		winnerName = players.get(0).getName();
-    	text.setText("The winner is: " + winnerName + ", with score: " + maxScore);
-    	
-    	/*
-    	 * Calculate if winner reached the highscore-list.
-    	 */
-    	boolean reachedHighscore = false;
-    	for(int i = 0; i<highscores.length;i++)
-    	{
-    		if(maxScore >= highscores[i]){
-    			reachedHighscore = true;
-    			break;
-    		}
-    	}
-    	
-    	TextView high = (TextView) winner.findViewById(R.id.high);
-    	if(reachedHighscore)
-    		high.setText("You reached the highscore list!");
-    	winner.show();
-    	
-    	playAgain 	= (Button) winner.findViewById(R.id.again);
+		/*
+		 * Display the name and score of the winner.
+		 */
+		maxScore=0;
+		for(Player p: players)
+		{
+			int tmp;
+			if((tmp = p.getTotalScore()) > maxScore)
+			{
+				maxScore = tmp;
+				winnerName = p.getName();
+			}
+		}
+		if(winnerName == null)
+			winnerName = players.get(0).getName();
+		text.setText("The winner is: " + winnerName + ", with score: " + maxScore);
+
+		/*
+		 * Calculate if winner reached the highscore-list.
+		 */
+		boolean reachedHighscore = false;
+		for(int i = 0; i<highscores.length;i++)
+		{
+			if(maxScore >= highscores[i]){
+				reachedHighscore = true;
+				break;
+			}
+		}
+
+		TextView high = (TextView) winner.findViewById(R.id.high);
+		if(reachedHighscore)
+			high.setText("You reached the highscore list!");
+		winner.show();
+
+		playAgain 	= (Button) winner.findViewById(R.id.again);
 		mainMenu	= (Button) winner.findViewById(R.id.mainMenu);
-    	
-		
-	/*
-         * Listener for playAgain - button. Returns the winner to
-         * YatzyActivity, where NewGameActivity is started.
-         */
-    	playAgain.setOnClickListener(new OnClickListener(){
- 	        public void onClick(View v) {
- 	        	
- 	        	Intent resultIntent = getIntent();
- 	        	resultIntent.putExtra("WinnerName", winnerName);
- 	        	resultIntent.putExtra("Score", maxScore);
- 	        	resultIntent.putExtra("playAgain", true);
- 	        	setResult(RESULT_OK, resultIntent);
- 	        	finish(); 	
- 	        }
-         });
-        
-        /*
-         * Listener for mainMenu - button. Returns the winner to
-         * YatzyActivity.
-         */
-         mainMenu.setOnClickListener(new OnClickListener(){
-  	        public void onClick(View v) {
-  	        	
-  	        	Intent resultIntent = getIntent();
- 	        	resultIntent.putExtra("WinnerName", winnerName);
- 	        	resultIntent.putExtra("Score", maxScore);
- 	        	resultIntent.putExtra("playAgain", false);
- 	        	setResult(RESULT_OK, resultIntent);
- 	        	finish();
-  	        }
-          });
-         
-	}
+
+
+		/*
+		 * Listener for playAgain - button. Returns the winner to
+		 * YatzyActivity, where NewGameActivity is started.
+		 */
+		playAgain.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+
+				Intent resultIntent = getIntent();
+				resultIntent.putExtra("WinnerName", winnerName);
+				resultIntent.putExtra("Score", maxScore);
+				resultIntent.putExtra("playAgain", true);
+				setResult(RESULT_OK, resultIntent);
+				finish(); 	
+			}
+		});
+
+		/*
+		 * Listener for mainMenu - button. Returns the winner to
+		 * YatzyActivity.
+		 */
+		mainMenu.setOnClickListener(new OnClickListener(){
+			public void onClick(View v) {
+
+				Intent resultIntent = getIntent();
+				resultIntent.putExtra("WinnerName", winnerName);
+				resultIntent.putExtra("Score", maxScore);
+				resultIntent.putExtra("playAgain", false);
+				setResult(RESULT_OK, resultIntent);
+				finish();
+			}
+		});
+
+
 
 
 	}
 	private void updateComboBg() {
 		// 
-			if(currentChoice.getKey().equals(0))
-				ones.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(0))
+			ones.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
 
-			if(currentChoice.getKey().equals(1))
-				twos.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(1))
+			twos.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
 
-			if(currentChoice.getKey().equals(2))
-				threes.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(2))
+			threes.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
 
-			if(currentChoice.getKey().equals(3))
-				fours.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(3))
+			fours.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
 
-			if(currentChoice.getKey().equals(4))
-				fives.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(5))
-				sixes.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(8))
-				onePair.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(9))
-				twoPairs.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(10))
-				trips.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(11))
-				quads.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(12))
-				smallStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(13))
-				bigStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(14))
-				fullHouse.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(15))
-				chance.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
-			if(currentChoice.getKey().equals(16))
-				yatzy.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(4))
+			fives.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(5))
+			sixes.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(8))
+			onePair.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(9))
+			twoPairs.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(10))
+			trips.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(11))
+			quads.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(12))
+			smallStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(13))
+			bigStraight.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(14))
+			fullHouse.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(15))
+			chance.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
+		if(currentChoice.getKey().equals(16))
+			yatzy.setBackgroundDrawable(getResources().getDrawable( R.drawable.selected));
 	}
 	public void resetComboBg(){
 		ones.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
@@ -829,6 +759,6 @@ public class GameActivity extends Activity {
 		fullHouse.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
 		chance.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
 		yatzy.setBackgroundDrawable(getResources().getDrawable( R.drawable.background));
-		
+
 	}
 }
