@@ -109,7 +109,7 @@ public class GameActivity extends Activity {
 
 		
 		for(int i = 0; i < 5; i++){
-			tempDice.add(0);
+			tempDice.add(null);
 		}
 		/**
 		 * The combinations are being added to the comboTextViews' list.
@@ -605,6 +605,7 @@ public class GameActivity extends Activity {
 	 * For each new turn, set all combinations unclickable
 	 */
 	private void newTurn(){
+		diceBeingHeld = 0;
 		throwTurn = 0;
 		throwButton.setClickable(true);
 		currentChoice.setKey(null);
