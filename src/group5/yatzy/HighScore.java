@@ -70,25 +70,23 @@ public class HighScore {
 	
 	/*
 	 * Takes a name and a score. Updates the highscore
-	 * list if score is good enough, and returns the 
-	 * position on the list. If the score is not good
-	 * enough, zero is returned.
+	 * list if score is good enough.
 	 */
-	public int update(String name,int score)
+	public void update(String name,int score)
 	{
-		int i = 1;
+		int i = 0;
 		for(Entry e:winners)
 		{
 			if((Integer)e.getValue() <= score)
 			{
-				winners.add(new Entry(name,score));
-				winners.remove(winners.size());
-				return i;
-			}
-			i++;	
+				winners.add(i,new Entry(name,score));
+				winners.remove(winners.size()-1);
+				saveHS();
+				break;
+			}	
+			i++;
 		}
-		saveHS();
-		return 0;
+		
 	}
 	
 	/*
