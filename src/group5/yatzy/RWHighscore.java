@@ -4,19 +4,18 @@ import java.util.*;
 import java.io.*;
 import android.content.Context;
 
-/*
+/**
  * Class with methods to handle the 
  * file with the highscores.
  * @Emma Bogren
  */
-
 public class RWHighscore 
 {
 	static String fileName = "highscores.txt";
 	static final int HS_PLACES = 3;
 	
 	
-	/*
+	/**
 	 * Creates an arraylist with empty scores,
 	 * and creates a new file with these scores.
 	 * Returns the arraylist.
@@ -41,7 +40,7 @@ public class RWHighscore
 		return hs;
 	}
 	
-	/*
+	/**
 	 * Reads the highscore list from an existing file,
 	 * and returns it in an arraylist.
 	 */
@@ -67,7 +66,7 @@ public class RWHighscore
 		}
 	}
 	
-	/*
+	/**
 	 * Takes an arraylist with the highscores, and saves it to the file for the highscore list.
 	 */
 	public static void saveHighScore(ArrayList<Entry<String,Integer>> hs, Context c) throws IOException
@@ -82,6 +81,5 @@ public class RWHighscore
 		}
 		bw.flush();
 		fOut.close();
-	}
-	
+	}	
 }
