@@ -11,7 +11,6 @@ package group5.yatzy;
 		protected K key;
 		protected V value;
 
-		
 		/**
 		 * Constructor takes a key and a value.
 		 */
@@ -37,7 +36,6 @@ package group5.yatzy;
 			return value;
 		}
 		
-
 		/**
 		 * Sets the value of the entry to v.
 		 */ 
