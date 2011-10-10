@@ -111,6 +111,11 @@ public class GameActivity extends Activity {
 		for(int i = 0; i < 5; i++){
 			tempDice.add(null);
 		}
+		
+		for(int i = 0; i < 18; i++){
+			tempCombos.add(null);
+		}
+		
 		/**
 		 * The combinations are being added to the comboTextViews' list.
 		 */
@@ -474,7 +479,6 @@ public class GameActivity extends Activity {
 		//Calculate combos and put into tempCombos arraylist.
 		Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice);
 		for(int i = 0; i < 18; i++){
-			tempCombos.add(null);
 			tempCombos.set(i, Combinations.combos.get(i));
 		}
 
