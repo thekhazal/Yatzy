@@ -138,9 +138,7 @@ public class GameActivity extends Activity {
 		comboTextViews.set(16,yatzy);
 		comboTextViews.set(17,total);
 
-		// Set all combos unclickable
-		newTurn();
-
+	
 		/**
 		 * Creates the five dice.
 		 */
@@ -351,7 +349,10 @@ public class GameActivity extends Activity {
 				currentChoice.setValue(tempCombos.get(16));
 			}
 		});
-
+		
+		// Set all combos unclickable
+		newTurn();
+		
 		/**
 		 * Listener for Done button
 		 */
