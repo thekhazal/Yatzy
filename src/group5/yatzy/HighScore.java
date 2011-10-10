@@ -16,7 +16,7 @@ public class HighScore {
 	int HS_PLACES = 3;
 	Context c;
 	
-	/*
+	/**
 	 * Constructor. Loads the highscorelist from
 	 * a file, and creates empty scores if necessary.
 	 */
@@ -35,9 +35,9 @@ public class HighScore {
 		}	
 	}
 	
-	/*
+	/**
 	 * Returns all names on the highscorelist.	 
-	 * */
+	 */
 	public String[] getWinnerNames()
 	{
 		String[] names = new String[HS_PLACES];
@@ -51,9 +51,9 @@ public class HighScore {
 		
 	}
 	
-	/*
+	/**
 	 * Returns all scores on the highscorelist.	 
-	 * */
+	 */
 	public int[] getWinnerScores()
 	{
 		int[] scores = new int[HS_PLACES];
@@ -67,8 +67,7 @@ public class HighScore {
 		
 	}
 	
-	
-	/*
+	/**
 	 * Takes a name and a score. Updates the highscore
 	 * list if score is good enough.
 	 */
@@ -89,7 +88,7 @@ public class HighScore {
 		
 	}
 	
-	/*
+	/**
 	 * Clear the highscorelist and add empty scores.
 	 */
 	public void clear()
@@ -100,7 +99,7 @@ public class HighScore {
 		saveHS();
 	}
 	
-	/*
+	/**
 	 * Saves the highscore list to a file.
 	 */
 	private void saveHS()
@@ -113,5 +112,4 @@ public class HighScore {
 			//File does not exist -> what to do?
 		}
 	}
-	
 }
