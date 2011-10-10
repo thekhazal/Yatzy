@@ -61,8 +61,7 @@ public class YatzyActivity extends Activity {
 			public void onClick(View v) {
 				Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
 				gameIntent.putExtra("Highscores",hs.getWinnerScores());
-				startActivityForResult(gameIntent,1);
-					
+				startActivityForResult(gameIntent,1);					
 			}
 		});
 
@@ -97,14 +96,13 @@ public class YatzyActivity extends Activity {
 	{
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		/*
-		 * If pushing the clear - button in HighscoreActivity
-		 */
+		// If pushing the clear - button in HighscoreActivity 
 		if(requestCode == 0){
 			if(resultCode == Activity.RESULT_OK)
 				hs.clear();
 		}
-		/*
+		
+		/**
 		 * When finishing a game, and pressing the play again - button or the back-to-main-
 		 * menu - button in the popup dialog in GameActivity.
 		 */
@@ -126,5 +124,4 @@ public class YatzyActivity extends Activity {
 			}
 		}
 	}
-
 }
