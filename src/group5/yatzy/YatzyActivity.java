@@ -96,6 +96,7 @@ public class YatzyActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		super.onActivityResult(requestCode, resultCode, data);
+		
 		/*
 		 * If pushing the clear - button in HighscoreActivity
 		 */
@@ -108,13 +109,19 @@ public class YatzyActivity extends Activity {
 		 * menu - button in the popup dialog in GameActivity.
 		 */
 		if(requestCode == 1){
-			if(resultCode == Activity.RESULT_OK){
-				hs.update(data.getStringExtra("WinnerName"), data.getIntExtra("WinnerScore",999)); //999=default value - chosen 500 just to find bugs easier
-				if(data.getBooleanExtra("playAgain", false)) //false = default value
+			
+			if(resultCode == Activity.RESULT_OK)
+			{	
+				String name = data.getExtras().getString("WinnerName");
+				int score = data.getExtras().getInt("Score");
+				hs.update(name, score);
+				
+				boolean playAgain = data.getExtras().getBoolean("playAgain");
+				if(playAgain)
 				{
-					Intent gameIntent = new Intent(YatzyActivity.this,NewGameActivity.class);
+					Intent gameIntent = new Intent(this,NewGameActivity.class);
 					gameIntent.putExtra("Highscores",hs.getWinnerScores());
-					startActivityForResult(gameIntent,1);	
+					startActivityForResult(gameIntent,1);
 				}
 			}
 		}

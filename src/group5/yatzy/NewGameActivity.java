@@ -132,8 +132,7 @@ public class NewGameActivity extends Activity {
 					Intent gameIntent = new Intent(NewGameActivity.this,GameActivity.class);
 					gameIntent.putExtra("NewGameActivity", players);
 					gameIntent.putExtra("Highscores", highscores);
-					startActivity(gameIntent);
-					finish();
+					startActivityForResult(gameIntent,0);
 				}
 			}
 		}); 
@@ -203,5 +202,26 @@ public class NewGameActivity extends Activity {
           // Do nothing.
         }
     }
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		
+		if(requestCode == 0){
+			if(resultCode == Activity.RESULT_OK)
+			{
+				String name = data.getExtras().getString("WinnerName");
+				int score = data.getExtras().getInt("Score");
+				boolean playAgain = data.getExtras().getBoolean("playAgain");
+				Intent resultIntent = getIntent();
+ 	        	resultIntent.putExtra("WinnerName", name);
+ 	        	resultIntent.putExtra("Score", score);
+ 	        	resultIntent.putExtra("playAgain", playAgain);
+ 	        	setResult(RESULT_OK, resultIntent);
+ 	        	finish();
+			}
+		}
+	}
 
 }

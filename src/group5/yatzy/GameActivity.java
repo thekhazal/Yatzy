@@ -689,6 +689,91 @@ public class GameActivity extends Activity {
   	        }
           });
          
+	/**
+	 * Calculate the winner
+	 */
+	private void winner(){
+		
+		Dialog winner = new Dialog(this);
+		winner.setContentView(R.layout.winnerdialog);
+		winner.setTitle("Game finished");
+    	winner.setCancelable(false);
+    	TextView text = (TextView) winner.findViewById(R.id.winner);
+
+    	
+    	/*
+    	 * Display the name and score of the winner.
+    	 */
+    	maxScore=0;
+    	for(Player p: players)
+    	{
+    		int tmp;
+    		if((tmp = p.getTotalScore()) > maxScore)
+    		{
+    			maxScore = tmp;
+    			winnerName = p.getName();
+    		}
+    	}
+    	if(winnerName == null)
+    		winnerName = players.get(0).getName();
+    	text.setText("The winner is: " + winnerName + ", with score: " + maxScore);
+    	
+    	/*
+    	 * Calculate if winner reached the highscore-list.
+    	 */
+    	boolean reachedHighscore = false;
+    	for(int i = 0; i<highscores.length;i++)
+    	{
+    		if(maxScore >= highscores[i]){
+    			reachedHighscore = true;
+    			break;
+    		}
+    	}
+    	
+    	TextView high = (TextView) winner.findViewById(R.id.high);
+    	if(reachedHighscore)
+    		high.setText("You reached the highscore list!");
+    	winner.show();
+    	
+    	playAgain 	= (Button) winner.findViewById(R.id.again);
+		mainMenu	= (Button) winner.findViewById(R.id.mainMenu);
+    	
+		
+	/*
+         * Listener for playAgain - button. Returns the winner to
+         * YatzyActivity, where NewGameActivity is started.
+         */
+    	playAgain.setOnClickListener(new OnClickListener(){
+ 	        public void onClick(View v) {
+ 	        	
+ 	        	Intent resultIntent = getIntent();
+ 	        	resultIntent.putExtra("WinnerName", winnerName);
+ 	        	resultIntent.putExtra("Score", maxScore);
+ 	        	resultIntent.putExtra("playAgain", true);
+ 	        	setResult(RESULT_OK, resultIntent);
+ 	        	finish(); 	
+ 	        }
+         });
+        
+        /*
+         * Listener for mainMenu - button. Returns the winner to
+         * YatzyActivity.
+         */
+         mainMenu.setOnClickListener(new OnClickListener(){
+  	        public void onClick(View v) {
+  	        	
+  	        	Intent resultIntent = getIntent();
+ 	        	resultIntent.putExtra("WinnerName", winnerName);
+ 	        	resultIntent.putExtra("Score", maxScore);
+ 	        	resultIntent.putExtra("playAgain", false);
+ 	        	setResult(RESULT_OK, resultIntent);
+ 	        	finish();
+  	        }
+          });
+         
+	}
+
+
 	}
 	private void updateComboBg() {
 		// 
