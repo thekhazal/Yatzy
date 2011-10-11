@@ -485,9 +485,7 @@ public class GameActivity extends Activity {
 		Combinations.calcCombos(players.get(playerTurn).getCombos(),tempDice);
 		for(int i = 0; i < 18; i++){
 			tempCombos.set(i, Combinations.combos.get(i));
-		}
-
-		for(int i = 0; i < 18; i++){
+	
 			Integer temp = tempCombos.get(i);
 
 			if(temp != null) {
