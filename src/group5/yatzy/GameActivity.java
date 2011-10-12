@@ -423,7 +423,7 @@ public class GameActivity extends Activity {
 					//updateComboBg();
 
 					//Check if last player has finished last throw
-					if((playerTurn == players.size()-1) && roundCheck() == 15) 
+					if((playerTurn == players.size()-1) && roundCheck() == 1) 
 						winner();
 
 					// Last Player has not finished his last throw

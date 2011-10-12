@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="fill_parent" 
     android:layout_width="fill_parent"
+    android:minWidth="250dp"
+   	android:minHeight="50dp"
     android:background="#000000" android:weightSum="1" android:orientation="vertical">
 
 	<TextView android:id="@+id/winner" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 	<TextView android:id="@+id/high" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 	<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout1">
  		<Button android:text="Play again!" android:id="@+id/again" android:layout_height="40dp" android:layout_width="100dp"></Button>
- 		<Button android:text="Back to main menu" android:id="@+id/mainMenu" android:layout_height="40dp" android:layout_width="wrap_content"></Button>
+ 		<Button android:text="Back to main menu" android:id="@+id/mainMenu" android:layout_height="40dp" android:layout_width="fill_parent"></Button>
  	</LinearLayout>
 </LinearLayout>
