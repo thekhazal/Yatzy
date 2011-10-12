@@ -15,7 +15,6 @@ public class Combinations {
 	 * This method calculates what options of combinations are available to the user
 	 * @param playerList: the players current combination list.
 	 * @param dice: the rolled dice
-	 * @return The player combination list with the values to be chosen from.
 	 */
 	public static void calcCombos(ArrayList<Integer> playerList, ArrayList<Integer> dice) {
 		for(int i = 0; i < 18; i++){

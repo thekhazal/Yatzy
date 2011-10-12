@@ -39,6 +39,16 @@ public class NewGameActivity extends Activity {
 
 	public static final int MAX_LENGTH = 10;
 	
+	
+	/**
+	 * Intercept back button, do nothing
+	 * */
+	@Override
+	public void onBackPressed() {
+	    //do nothing
+	}
+	
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -133,6 +143,7 @@ public class NewGameActivity extends Activity {
 					gameIntent.putExtra("NewGameActivity", players);
 					gameIntent.putExtra("Highscores", highscores);
 					startActivityForResult(gameIntent,0);
+					finish();
 				}
 			}
 		}); 
@@ -218,8 +229,9 @@ public class NewGameActivity extends Activity {
  	        	resultIntent.putExtra("Score", score);
  	        	resultIntent.putExtra("playAgain", playAgain);
  	        	setResult(RESULT_OK, resultIntent);
- 	        	finish();
 			}
+			finish();
 		}
 	}
+    
 }

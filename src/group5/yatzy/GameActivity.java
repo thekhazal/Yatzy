@@ -69,6 +69,16 @@ public class GameActivity extends Activity {
 	// Save current choice with two integers (position in player combo list, value at position)
 	Entry<Integer,Integer> currentChoice = new Entry<Integer,Integer>(null, null);
 
+	
+	/**
+	 * Intercept back button, do nothing
+	 * */
+	@Override
+	public void onBackPressed() {
+		finish();
+	}
+	
+	
 	/** Called when the activity is first created.*/
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
