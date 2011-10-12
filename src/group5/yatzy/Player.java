@@ -40,8 +40,7 @@ public class Player {
 	 * Updates the player score list with the chosen combination.
 	 * Also updates the sums and calculates if a bouns has been earned.
 	 * @param position The combination number chosen.
-	 * @param score The calculated score for the specific position. 
-	 * @return Returns the updated score list.
+	 * @param score The calculated score for the specific position.
 	 */
 	public void updateCombos(int position, int score) {
 		combos.set(position, score);
