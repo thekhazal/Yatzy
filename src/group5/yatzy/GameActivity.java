@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 /**
  * This class controls the game flow and updates the game.xml. 
- * @author Anmar Khazal, Johan Grund�n, Daniel Gunnarsson, Viktor Swantesson, Emma Bogren
+ * @author Anmar Khazal, Johan Grunden, Daniel Gunnarsson, Viktor Swantesson, Emma Bogren
  *
  */
 public class GameActivity extends Activity {
@@ -68,16 +68,6 @@ public class GameActivity extends Activity {
 
 	// Save current choice with two integers (position in player combo list, value at position)
 	Entry<Integer,Integer> currentChoice = new Entry<Integer,Integer>(null, null);
-
-	
-	/**
-	 * Intercept back button, do nothing
-	 * */
-	@Override
-	public void onBackPressed() {
-		finish();
-	}
-	
 	
 	/** Called when the activity is first created.*/
 	@Override
@@ -87,7 +77,6 @@ public class GameActivity extends Activity {
 
 		Bundle extras = getIntent().getExtras();
 		highscores = (int[]) extras.get("Highscores");
-
 
 		gameText 	= (TextView) 	findViewById(R.id.headText);
 		playerName 	= (TextView) 	findViewById(R.id.playerNameText);
@@ -423,7 +412,7 @@ public class GameActivity extends Activity {
 					//updateComboBg();
 
 					//Check if last player has finished last throw
-					if((playerTurn == players.size()-1) && roundCheck() == 1) 
+					if((playerTurn == players.size()-1) && roundCheck() == 15) 
 						winner();
 
 					// Last Player has not finished his last throw

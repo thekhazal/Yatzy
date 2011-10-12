@@ -143,7 +143,6 @@ public class NewGameActivity extends Activity {
 					gameIntent.putExtra("NewGameActivity", players);
 					gameIntent.putExtra("Highscores", highscores);
 					startActivityForResult(gameIntent,0);
-					finish();
 				}
 			}
 		}); 
@@ -228,7 +227,7 @@ public class NewGameActivity extends Activity {
  	        	resultIntent.putExtra("WinnerName", name);
  	        	resultIntent.putExtra("Score", score);
  	        	resultIntent.putExtra("playAgain", playAgain);
- 	        	setResult(RESULT_OK, resultIntent);
+ 	        	setResult(RESULT_OK, resultIntent);	
 			}
 			finish();
 		}
