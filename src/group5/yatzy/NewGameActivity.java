@@ -37,7 +37,7 @@ public class NewGameActivity extends Activity {
 	
 	private int[] highscores;
 
-	public static final int MAX_LENGTH = 4;
+	public static final int MAX_LENGTH = 10;
 	
     /** Called when the activity is first created. */
     @Override
