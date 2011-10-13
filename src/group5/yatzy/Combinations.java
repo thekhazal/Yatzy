@@ -10,15 +10,20 @@ public class Combinations {
 
 	public static ArrayList<Integer> combos = new ArrayList<Integer>();
 	private static Integer temp = 0;
-
+	private static boolean firsttime = true;
 	/**
 	 * This method calculates what options of combinations are available to the user
 	 * @param playerList: the players current combination list.
 	 * @param dice: the rolled dice
 	 */
+	
+	
 	public static void calcCombos(ArrayList<Integer> playerList, ArrayList<Integer> dice) {
-		for(int i = 0; i < 18; i++){
-			combos.add(null);
+		if(firsttime){
+			for(int i = 0; i < 18; i++){
+				combos.add(null);
+			}
+			firsttime = false;
 		}
 		
 		//The dice list is sorted for proccesing.
