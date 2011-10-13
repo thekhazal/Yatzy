@@ -37,7 +37,7 @@ public class NewGameActivity extends Activity {
 	
 	private int[] highscores;
 
-	public static final int MAX_LENGTH = 10;
+	public static final int MAX_LENGTH = 11;
 	
 	
 	/**
