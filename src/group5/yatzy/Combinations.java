@@ -88,7 +88,7 @@ public class Combinations {
 				combos.set(12, null);
 		}
 		else 
-			combos.set(12, 0);
+			combos.set(12, null);
 
 		/**
 		 * The BigStraight field gets calculated.
